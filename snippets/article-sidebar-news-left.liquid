@@ -1,0 +1,200 @@
+<div id="spier-block" style="display:none;">
+  <div class="toc stiky" id="toc-spy">
+    <div class="toc-title">index</div>
+    <div class="toc_list">
+      <ul class="toc_ul">
+        
+      </ul>
+    </div>
+  </div>
+</div>
+<style>
+  .toc-title{
+    font-size: 16px;
+    padding: 0 5px 10px;
+    color: #d5455d;
+    letter-spacing: 1px;
+    text-shadow: 2px 1px 2px #e6e6e6;
+    text-transform: uppercase;
+  }
+  .toc_ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc_ul li{
+    padding: 5px;
+    border-top-width: 1px;
+    align-items: center;
+    border-top: 1px solid #d7d9dd;
+  }
+  .toc_ul li a{
+    font-size: 14px;
+    line-height: 24px;
+    display: inline-block;
+    transition: all 0ms;
+    color: #0f0f0f;
+  }
+  /* blog nav list strat */
+  .articre_toc{
+    border: 1px #000 solid;
+    border-radius: 10px;
+  }
+  .articre_toc_list p{
+    font-size: 24px!important;
+    margin-bottom: 0!important;
+    font-weight: 600;
+    text-align: center;
+    line-height: 45px!important;
+    padding: 7px 0 3px;
+    background-color: #d5455d;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px #000 solid;
+  }
+  .articre_toc_ul{
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  .articre_toc_ul li{
+    padding: 5px 0;
+  }
+  .toc_inc{
+    padding-right: 10px;
+  }
+  .articre_toc_ul li a{
+    border-bottom: 0 !important;
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .author_image img{
+    border-radius:25px;
+    width:30px;
+    margin-right:10px;
+  }
+  .articre_toc_ul li a:hover{
+    border-bottom: 1px solid #C4C4C4;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+    @media screen and (min-width: 1025px) and (max-width: 1400px) { 
+    #spier-block{
+      margin-left: 0 !important;
+      width: 23% !important;
+    }
+    .widget_post_list{
+        width: 25% !important;
+      }
+  }
+  @media screen and (max-width: 1024px){
+    #spier-block,.type_instagram{
+      display:none !important;
+    }
+    .articre_toc{
+      margin-bottom:10px;
+      margin-top:10px;
+    }
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+  		$(function(){
+		    // 过滤筛选出h2,h3,h4的标签元素
+    
+        $(".author_image").html($(".template_author").find("a").html());
+		    var oH = $('#t4s-article-{{article.id}}').find('h2');
+		    var tagName_list = [];
+		    var tagHigh_list = [];
+            var blog_title = document.getElementById('spier-block');
+		    // 相当于python中的for循环遍历;元素集才可以使用each()函数，列表不能
+		    oH.each(function(i){
+		        // i 为索引值
+		         //console.log(i);
+		         //console.log($(this).index());
+		        tagName_list.push($(this).prop('tagName'));
+		        tagHigh_list.push(Math.ceil($(this).offset().top));  // 得到的高度值进行向上取整
+		    });
+		     //console.log(tagName_list);
+		     //console.log(tagHigh_list);
+			 var itagName_list = tagName_list.length;
+			 var eleh2_3 = undefined;  // 用于插入2级或3级标题标签对应的条目的节点
+            //在文章内容第一个h2前面插入目录结构
+			 var articre = $('.blog_list_img_mb');
+			 var toc_html = '<div class="articre_toc"><div class="articre_toc_list"><p>Summary</p><ul class="articre_toc_ul"></ul></div></div>';
+				 articre.after(toc_html);
+
+        
+			     /*---------目录自动生成算法-------------*/
+			     for(var i=0;i<itagName_list;i++){
+			 
+			         var a = tagName_list[i];
+					 var b = tagHigh_list[i];
+                     //判断h2是否存在
+			         if (a == 'H2'){
+			             //获取h2的内容
+			             var oh2 = oH.eq(i);
+                         //给文章内容的目录结构添加LI数据
+                       	 var toc_ul = $('.articre_toc_ul');
+						 var toc_li = '<li><span class="toc_inc">▷</span><a href="#test_'+i+'"><span class="level2">'+ oh2.html() +'</span></a></li>';
+						 toc_ul.append(toc_li);
+                         //往文章内容的h2前面插入描点定位div
+                         var div_html = '<div id="test_'+i+'"></div>';//定位div
+						 oh2.before(div_html);//往H2前面插入div
+                         //给文章左侧的目录结构增加li
+                         eleh2_3 = $('.toc_ul');
+						 //oh2.attr("id","test_"+i);
+			             var plus = '<li><a href="#test_'+i+'"><span id="tagHigh_'+i+'" class="level2">'+ oh2.html() +'</span></a></li>';
+			             eleh2_3.append(plus);
+			             // eleh2_3.html(eleh2_3.html() + plus);
+			             eleh2_3 = $('.toc_ul>li:last ul'); // 选择最后一个即创建的最新的一个li，获取用于插入3级标题标签对应的条目的节点
+			             // console.log(eleh2_3.html());
+			         }
+					 }
+           var first_text =  $("article").find(":first").text();
+        if(!$.trim(first_text)){
+          $(".blog_list_img_mb").remove();
+        }
+                	let pageHeight = document.body.scrollHeight || document.documentElement.scrollHeight; // 页面总高度
+        			let windowHeight = document.documentElement.clientHeight || document.body.clientHeight; // 浏览器视口高度
+        			let scrollAvail = pageHeight - windowHeight; // 可滚动的高度	
+                    var xiding = document.querySelector('.widget_post_contonr'),
+                         xidingTop  = xiding.offsetTop;
+                    var endHight = document.querySelector('.t4s-article-tags'),
+                         endHightTop  = endHight.offsetTop;
+				window.onscroll = function () {
+				    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  // 获取滚动条的高度
+                        document.querySelector('.progress').style.width = (scrollTop/scrollAvail)*100 + '%';    // 计算占比
+                    //console.log("现在高度"+scrollTop);
+                    //console.log(endHightTop);
+                    //判断滚动高度大于右侧栏高度并且小于文章内容结束范围时，把右侧栏固定显示，否则相对固定
+                    if(scrollTop > xidingTop+200 && scrollTop<endHightTop){
+                        xiding.style.cssText = "position: fixed;top: 100px;width:20%";
+                    }else{
+                        xiding.style.cssText = "position: relative;max-width:80%";
+                    }
+                  //判断滚动高度大于300并且文章的h2数量大于0并且小于文章内容结束范围时，把左侧栏固定显示，否则隐藏
+                  if(scrollTop>300 && itagName_list>0 &&  scrollTop<endHightTop){
+                        blog_title.style.cssText = "position: fixed;top: 100px;display: block;margin-left: 10%;margin-top: 50px;width: 14%;";
+                    }else{
+                        blog_title.style.cssText = "position: relative;display: none;";
+                    }
+                                                //判断文章内容h2的滚动位置改变左侧目录列表标题的颜色
+												var cc = scrollTop+105;
+												for(var ai=0;ai<itagName_list;ai++){
+													var bb = ai+1;
+													if(cc>(tagHigh_list[ai]-100) && cc<=(tagHigh_list[bb]-100)){
+														document.getElementById("tagHigh_"+ai).style.color="#d5455d";
+														
+													}else{
+														document.getElementById("tagHigh_"+ai).style.color="black";
+														if(bb == itagName_list&&cc>(tagHigh_list[ai]-50)){
+															document.getElementById("tagHigh_"+ai).style.color="#d5455d";
+														}else{
+															document.getElementById("tagHigh_"+ai).style.color="black";
+														}
+													}
+												} 
+												 }
+			});
+</script>

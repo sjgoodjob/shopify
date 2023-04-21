@@ -1,0 +1,300 @@
+{%- liquid
+  assign se_blocks = section.blocks
+  assign se_stts = section.settings
+  -%}
+{%- if se_blocks.size > 0 -%}
+<div class="tab_model">
+  <div class="tab_list">
+	<ul>
+        {%- for block in se_blocks -%}
+          {%- if block.settings.collection_list_1 != empty -%}
+          {%- assign collection_list_1 = collections[block.settings.collection_list_1] -%}
+          {%- if collection_list_1.title == collection.title -%}
+          <li class="tab_li_color">
+            {% else %}
+            <li>
+            {% endif -%}
+            {{ collection_list_1.title | link_to: collection_list_1.url }}</li>
+          {% endif -%}
+          {%- if block.settings.collection_list_2 != empty -%}
+          {%- assign collection_list_2 = collections[block.settings.collection_list_2] -%}
+                    {%- if collection_list_2.title == collection.title -%}
+          <li class="tab_li_color">
+            {% else %}
+            <li>
+            {% endif -%}
+            {{ collection_list_2.title | link_to: collection_list_2.url }}</li>
+          {% endif -%}
+          {%- if block.settings.collection_list_3 != empty -%}
+          {%- assign collection_list_3 = collections[block.settings.collection_list_3] -%}
+          {%- if collection_list_3.title == collection.title -%}
+          <li class="tab_li_color">
+            {% else %}
+            <li>
+            {% endif -%}
+            {{ collection_list_3.title | link_to: collection_list_3.url }}</li>
+          {% endif -%}
+          {%- if block.settings.collection_list_4 != empty -%}
+          {%- assign collection_list_4 = collections[block.settings.collection_list_4] -%}
+          {%- if collection_list_4.title == collection.title -%}
+          <li class="tab_li_color">
+            {% else %}
+            <li>
+            {% endif -%}
+            {{ collection_list_4.title | link_to: collection_list_4.url }}</li>
+          {% endif -%}
+          {%- if block.settings.collection_list_5 != empty -%}
+          {%- assign collection_list_5 = collections[block.settings.collection_list_5] -%}
+           {%- if collection_list_5.title == collection.title -%}
+          <li class="tab_li_color">
+            {% else %}
+            <li>
+            {% endif -%}
+            {{ collection_list_5.title | link_to: collection_list_5.url }}</li>
+          {% endif -%}
+           {%- if block.settings.collection_list_6 != empty -%}
+          {%- assign collection_list_6 = collections[block.settings.collection_list_6] -%}
+           {%- if collection_list_6.title == collection.title -%}
+          <li class="tab_li_color">
+            {% else %}
+            <li>
+            {% endif -%}
+             {{ collection_list_6.title | link_to: collection_list_6.url }}</li>
+          {% endif -%}
+          {%- endfor -%}
+	</ul>
+	<div style="clear: both;"></div>
+  </div>
+</div>
+  {% endif -%}
+<style>
+  @media screen and (min-width: 1025px) and (max-width: 1400px) {
+	.tab_list ul li a {
+	  padding: 10px 20px !important;
+	}
+		.tab_list ul li {
+	  margin: 0 10px !important;
+	}
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+	.tab_list ul li a {
+	  font-size: 16px !important;
+	  line-height: 36px !important;
+	  padding: 10px 10px !important;
+	}
+		.tab_list ul li {
+	  margin: 0 5px !important;
+	}
+  }
+  @media screen and (max-width: 767px){
+	.tab_list ul{
+	  justify-content: left !important;
+	}
+	.tab_list ul li {
+	  margin: 0 5px !important;
+	}
+	.tab_list ul li a {
+	  font-size: 16px !important;
+	  padding: 10px 30px !important;
+	  line-height: 42px !important;
+	}
+  }
+  .tab_model{
+    background-color: {{se_stts.menu_back_color}};    
+    padding: 15px 0;
+  }
+  .tab_model{
+	position: relative;
+  }
+  .tab_list ul{
+	list-style-type: none;
+	width:100%;
+	float: left;
+	white-space: nowrap;
+	opacity: 1;
+    height: auto;
+    z-index: 1;
+    gap: 0px;
+    top: 50px;
+    flex-direction: row;
+    margin-bottom: 0px;
+    position: sticky;
+	max-width: 100%;
+    min-width: 100%;
+    overflow: auto hidden;
+	left: 0px;
+    margin: 0px;
+	display: flex;
+	justify-content: center;
+	scrollbar-width: none;
+	-ms-overflow-style:none;
+  }
+  .tab_list ul::-webkit-scrollbar{
+	display:none;
+  }
+  .tab_list ul li{
+  	margin-bottom: 0px;
+    text-align: center;
+	margin: 0 5px;
+	float: left;
+	}
+  .tab_li_color a{
+    background-color: {{se_stts.button_back_color}};
+    color: {{se_stts.button_color}} !important;
+    font-size: {{se_stts.button_size}}px;
+	line-height: {{se_stts.button_line_height}}px;
+    font-weight: {{se_stts.button_weight}}0 !important;
+    border-radius: 15px;
+	
+  }
+  .tab_list ul li a{
+    padding: 5px 30px;
+    color: {{se_stts.menu_color}};
+    font-size: {{se_stts.menu_size}}px;
+    font-weight: {{se_stts.menu_weight}}0;
+	  line-height: {{se_stts.menu_line_height}}px;
+  }
+  .__pf [style*="--s-xs"]>.pf-c {
+    padding: 0 !important;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Hover Menu",
+    "class": "type_hover_menu",
+    "settings": [
+      {
+        "type": "color",
+        "id": "menu_back_color",
+        "label": "Mrnu Background color",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "== Menu Font Config:"
+      },
+      {
+        "type": "color",
+        "id": "menu_color",
+        "label": "Li Font color",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "menu_size",
+        "label": "Li Font Size",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "menu_weight",
+        "label": "Li Font Weight",
+        "default": 60,
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "0"
+      },
+      {
+        "type": "range",
+        "id": "menu_line_height",
+        "label": "Li Line Height",
+        "default": 25,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "== Button Font Config:"
+      },
+      {
+        "type": "color",
+        "id": "button_back_color",
+        "label": "Button Background color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button color",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "button_size",
+        "label": "Button  Font Size",
+        "default": 16,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "button_weight",
+        "label": "Button Font Weight",
+        "default": 40,
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "0"
+      },
+      {
+        "type": "range",
+        "id": "button_line_height",
+        "label": "Button Line Height",
+        "default": 16,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
+    ],
+    "blocks": [
+       {
+        "type": "collection",
+        "name": "Collection List",
+        "limit": 1,
+        "settings": [
+          {
+           "type": "collection",
+           "id": "collection_list_1",
+           "label": "Select the classification of the menu 01"
+          },
+          {
+           "type": "collection",
+           "id": "collection_list_2",
+           "label": "Select the classification of the menu 02"
+          },
+          {
+           "type": "collection",
+           "id": "collection_list_3",
+           "label": "Select the classification of the menu 03"
+          },
+          {
+           "type": "collection",
+           "id": "collection_list_4",
+           "label": "Select the classification of the menu 04"
+          },
+          {
+           "type": "collection",
+           "id": "collection_list_5",
+           "label": "Select the classification of the menu 05"
+          },
+          {
+           "type": "collection",
+           "id": "collection_list_6",
+           "label": "Select the classification of the menu 06"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

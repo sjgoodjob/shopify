@@ -1,0 +1,29 @@
+<div class="code_setting">{{ section.settings.code }}</div>
+{%- schema -%}
+  {
+    "name": "Custom HTML Advertise",
+    "class": "nt_section type_custom_html",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "This is an advanced section. Knowledge of web design languages such as HTML, CSS is required."
+      },
+      {
+        "type": "header",
+        "content": "== General Settings"
+      },
+      {
+        "type": "html",
+        "id": "code",
+        "label": "Content",
+        "default": "<script>//Put JavaScript code here</script>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom HTML Advertise",
+        "category": "V. Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,210 @@
+{
+  "sections": {
+    "heading": {
+      "type": "heading-dynamic",
+      "blocks": {
+        "ba0c8e30-c11a-4ab7-97c4-4acc1a053a3e": {
+          "type": "1",
+          "settings": {
+            "heading": "FAQ",
+            "tag": "h3",
+            "fontf": "2",
+            "text_cl": "#ffffff",
+            "text_fs": 20,
+            "text_lh": 26,
+            "text_fw": 500,
+            "text_ls": 2,
+            "mgb": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_fs_tb": 20,
+            "text_lh_tb": 26,
+            "text_ls_tb": 2,
+            "mgb_tb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 20,
+            "text_lh_mb": 26,
+            "text_ls_mb": 2,
+            "mgb_mb": 0
+          }
+        }
+      },
+      "block_order": [
+        "ba0c8e30-c11a-4ab7-97c4-4acc1a053a3e"
+      ],
+      "settings": {
+        "parallax": true,
+        "bg_overlay": "#ff7b83",
+        "bg_opacity": 40,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_tb": 50,
+        "padding_bottom_tb": 50,
+        "padding_top_mb": 50,
+        "padding_bottom_mb": 50,
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "mgb": 0,
+        "mgb_tb": 0,
+        "mgb_mb": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": ",,50px,",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "disabled": true,
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "165214825814e830e7": {
+      "type": "accordion",
+      "blocks": {
+        "1652148258305a99c1-0": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "Is the packaging discrete?",
+            "content": "<p>Your privacy is extremely important to us and our discreet packaging enables you to shop with Honey Play Box in complete confidence. With completely plain packaging, you will be the only person excited about what's inside.  Return shipping on the label will read 'UC Global Trade'.<\/p>"
+          }
+        },
+        "1652148258305a99c1-1": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "When will I receive my package?",
+            "content": "<p>Online orders are usually shipped within 2 days of receiving. Most orders will be delivered within 5 days of shipment, but be aware that this can vary depending on country. You can always check the status of your order by checking your confirmation email.<br\/>Honey Play Box uses express services from USPS or FedEx for most deliveries. Please note that we cannot ship to certain countries due to legal restrictions. If delivery problems arise, we will contact you by email or phone.<\/p>"
+          }
+        },
+        "1652148258305a99c1-2": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "How do I track my order?",
+            "content": "<p>An order confirmation will be emailed to you as soon as your purchase has been verified. With this confirmation you will find an order number. If you have any questions about the delivery of your purchase or need help tracking it, please contact info@honeyplaybox.com, quoting your order number.<\/p>"
+          }
+        },
+        "0c4e86da-f870-4d3c-abce-b988cae18d6c": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "Order cancellation?",
+            "content": "<p><strong>To cancel and return your merchandise, please contact Honey Play Boxinfo@honeyplaybox.com within 24 hours of your purchase for a free cancellation. It will take 5-7 business days to receive your refund, depending on your bank’s transfer process. Once 24 hours have passed, your purchase has been processed and is already being shipped.<\/strong><\/p>"
+          }
+        },
+        "cb973ab0-b192-4c97-b7ba-6b8acbf93e5f": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "How do I register my warranty?",
+            "content": "<p>You can find our <a href=\"https:\/\/www.honeyplaybox.com\/pages\/warranty\" title=\"https:\/\/www.honeyplaybox.com\/pages\/warranty\">Warranty Registration here.<\/a><\/p>"
+          }
+        },
+        "f9fbcebb-a809-4cca-8806-c102d1de1c0b": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "How do I turn my toy on\/off?",
+            "content": "<p>All toys come with an instruction pamphlet. Most toys you hold down the power button for 3 – 5 seconds until it lights up and then push the power button once more to start cycling through patterns or intensities. For turning the toy off you hold down for 3 seconds. Toys that come with a remote use the same steps. Please note that remotes are automatically synced to the toy.<\/p>"
+          }
+        },
+        "9aa601e3-a39f-431e-aaa9-de35ae6945fb": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "How will I know if my order is confirmed?",
+            "content": "<p>After you have placed your order, you will receive an acknowledgement e-mail from us to confirm that your orders have been received. However, do note that orders will only be shipped when your credit card payment has been approved and billing and delivery address is verified. Alternatively, you may check the status of your order in “My Account” if you are a registered user.<\/p>"
+          }
+        },
+        "15f6d610-63c6-4503-8a7f-4a1774dcf9ed": {
+          "type": "accor_item",
+          "settings": {
+            "icon": "none",
+            "title": "I have problems adding items to my shopping cart?",
+            "content": "<p>You will be able to add the items as long as it is available. There could be an instance where the item is in someone else’s shopping cart hence the status of the items is reflected as “Temporarily Unavailable”.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1652148258305a99c1-0",
+        "1652148258305a99c1-1",
+        "1652148258305a99c1-2",
+        "0c4e86da-f870-4d3c-abce-b988cae18d6c",
+        "cb973ab0-b192-4c97-b7ba-6b8acbf93e5f",
+        "f9fbcebb-a809-4cca-8806-c102d1de1c0b",
+        "9aa601e3-a39f-431e-aaa9-de35ae6945fb",
+        "15f6d610-63c6-4503-8a7f-4a1774dcf9ed"
+      ],
+      "settings": {
+        "design_heading": "1",
+        "heading_center": true,
+        "top_heading": "",
+        "icon_heading": "las la-gem",
+        "top_subheading": "",
+        "tophead_mb": 30,
+        "tophead_mb_tb": 30,
+        "tophead_mb_mb": 25,
+        "accor_des": "1",
+        "title_cl": "#222222",
+        "bg_title_cl": "#f6f6f8",
+        "title_active_cl": "#000000",
+        "bg_title_active_cl": "#f6f6f8",
+        "content_cl": "#878787",
+        "bg_content_cl": "#ffffff",
+        "content_align": "t4s-text-start",
+        "auto_active": true,
+        "layout": "t4s-container-wrap",
+        "custom_width": 1000,
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "100px,,100px,",
+        "pd": "",
+        "mg_tb": "100px,,100px,",
+        "pd_tb": "",
+        "mg_mb": "50px,,50px,",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "165214825814e830e7"
+  ]
+}

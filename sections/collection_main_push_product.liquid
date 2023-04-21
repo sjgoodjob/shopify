@@ -1,0 +1,192 @@
+{%- liquid
+  assign se_stts = section.settings
+  assign related_collection_01 = se_stts.related_collection_01
+  assign main_push_collection_01 = se_stts.main_push_collection_01
+  assign related_collection_02 = se_stts.related_collection_02
+  assign main_push_collection_02 = se_stts.main_push_collection_02
+  assign related_collection_03 = se_stts.related_collection_03
+  assign main_push_collection_03 = se_stts.main_push_collection_03
+  assign related_collection_04 = se_stts.related_collection_04
+  assign main_push_collection_04 = se_stts.main_push_collection_04
+  assign related_collection_05 = se_stts.related_collection_05
+  assign main_push_collection_05 = se_stts.main_push_collection_05
+  assign related_collection_06 = se_stts.related_collection_06
+  assign main_push_collection_06 = se_stts.main_push_collection_06
+  assign sett_equal = true
+assign show_vendor = se_stts.show_vendor
+assign txt_cd = 'products.grid_items.offer_end_in' | t 
+  -%}
+          {%- assign inc_price = settings.price_format -%}
+          {%- assign use_rating = settings.use_pr_rating -%}
+          {%- assign inc_rating = settings.app_review -%}
+          {%- assign show_color = settings.show_pr_color -%}
+          {%- assign show_cl_type = settings.show_color_type -%}
+          {%- assign show_size = settings.show_pr_size -%}
+          {%- assign inc_pr = '3' -%}
+          {%- assign use_cdt = 'true' -%}
+          {%- assign col = '3' -%}
+          {%- assign col_tb = '4' -%}
+          {%- assign col_mb = '6' -%}
+          {%- capture url_cat -%}/collections/{{main_push_collection}}{%- endcapture -%}
+          
+<style>
+  .main_push_product{
+    width: 100%;
+    background-color: {{ se_stts.main_push_color }};
+    padding-bottom: 20px;
+  }
+  .main_push_content{
+    display: flex;
+    justify-content: center; 
+    max-width: 1250px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  @media (min-width: 1502px){
+    .t4s-product.t4s-pr-grid.t4s-pr-style6 {
+    flex: 0 0 25%!important;
+    max-width: 25%!important;
+}
+  }
+</style>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  {%- if collection.handle == related_collection_01 -%}
+<div class="main_push_content">
+  {% for product in collections[main_push_collection_01].products limit: 4 %}
+    {%- render 'collection_pr_list_activity',product:product,inc_pr:inc_pr,use_cdt:use_cdt,txt_cd:txt_cd, col:col, col_tb:col_tb, col_mb:col_mb,url_cat:url_cat,sett_equal:sett_equal,show_vendor:show_vendor,inc_price:inc_price,use_rating:use_rating,inc_rating:inc_rating,show_color:show_color,show_cl_type:show_cl_type,show_size:show_size -%}
+  {%- endfor -%}
+  </div>
+    {% endif -%}
+  {%- if collection.handle == related_collection_02 -%}
+<div class="main_push_content">
+  {% for product in collections[main_push_collection_02].products limit: 4 %}
+    {%- render 'collection_pr_list_activity',product:product,inc_pr:inc_pr,use_cdt:use_cdt,txt_cd:txt_cd, col:col, col_tb:col_tb, col_mb:col_mb,url_cat:url_cat,sett_equal:sett_equal,show_vendor:show_vendor,inc_price:inc_price,use_rating:use_rating,inc_rating:inc_rating,show_color:show_color,show_cl_type:show_cl_type,show_size:show_size -%}
+  {%- endfor -%}
+  </div>
+    {% endif -%}
+  {%- if collection.handle == related_collection_03 -%}
+<div class="main_push_content">
+  {% for product in collections[main_push_collection_03].products limit: 4 %}
+    {%- render 'collection_pr_list_activity',product:product,inc_pr:inc_pr,use_cdt:use_cdt,txt_cd:txt_cd, col:col, col_tb:col_tb, col_mb:col_mb,url_cat:url_cat,sett_equal:sett_equal,show_vendor:show_vendor,inc_price:inc_price,use_rating:use_rating,inc_rating:inc_rating,show_color:show_color,show_cl_type:show_cl_type,show_size:show_size -%}
+  {%- endfor -%}
+  </div>
+    {% endif -%}
+  {%- if collection.handle == related_collection_04 -%}
+<div class="main_push_content">
+  {% for product in collections[main_push_collection_04].products limit: 4 %}
+    {%- render 'collection_pr_list_activity',product:product,inc_pr:inc_pr,use_cdt:use_cdt,txt_cd:txt_cd, col:col, col_tb:col_tb, col_mb:col_mb,url_cat:url_cat,sett_equal:sett_equal,show_vendor:show_vendor,inc_price:inc_price,use_rating:use_rating,inc_rating:inc_rating,show_color:show_color,show_cl_type:show_cl_type,show_size:show_size -%}
+  {%- endfor -%}
+  </div>
+    {% endif -%}
+  {%- if collection.handle == related_collection_05 -%}
+<div class="main_push_content">
+  {% for product in collections[main_push_collection_05].products limit: 4 %}
+    {%- render 'collection_pr_list_activity',product:product,inc_pr:inc_pr,use_cdt:use_cdt,txt_cd:txt_cd, col:col, col_tb:col_tb, col_mb:col_mb,url_cat:url_cat,sett_equal:sett_equal,show_vendor:show_vendor,inc_price:inc_price,use_rating:use_rating,inc_rating:inc_rating,show_color:show_color,show_cl_type:show_cl_type,show_size:show_size -%}
+  {%- endfor -%}
+  </div>
+    {% endif -%}
+  {%- if collection.handle == related_collection_06 -%}
+<div class="main_push_content">
+  {% for product in collections[main_push_collection_06].products limit: 4 %}
+    {%- render 'collection_pr_list_activity',product:product,inc_pr:inc_pr,use_cdt:use_cdt,txt_cd:txt_cd, col:col, col_tb:col_tb, col_mb:col_mb,url_cat:url_cat,sett_equal:sett_equal,show_vendor:show_vendor,inc_price:inc_price,use_rating:use_rating,inc_rating:inc_rating,show_color:show_color,show_cl_type:show_cl_type,show_size:show_size -%}
+  {%- endfor -%}
+  </div>
+    {% endif -%}
+{% schema %}
+  {
+    "name": "Main Push Product",
+    "class": "main_push_product",
+    "settings": [
+          {
+            "type": "header",
+            "content": "== Featured Product Settings 01"
+          },
+           {
+           "type": "collection",
+           "id": "related_collection_01",
+           "label": "Main push product related classification"
+          },
+          {
+           "type": "collection",
+           "id": "main_push_collection_01",
+           "label": "Main Push Product Collection"
+          },
+          {
+            "type": "header",
+            "content": "== Featured Product Settings 02"
+          },
+           {
+           "type": "collection",
+           "id": "related_collection_02",
+           "label": "Main push product related classification"
+          },
+          {
+           "type": "collection",
+           "id": "main_push_collection_02",
+           "label": "Main Push Product Collection"
+          },
+          {
+            "type": "header",
+            "content": "== Featured Product Settings 03"
+          },
+           {
+           "type": "collection",
+           "id": "related_collection_03",
+           "label": "Main push product related classification"
+          },
+          {
+           "type": "collection",
+           "id": "main_push_collection_03",
+           "label": "Main Push Product Collection"
+          },
+          {
+            "type": "header",
+            "content": "== Featured Product Settings 04"
+          },
+           {
+           "type": "collection",
+           "id": "related_collection_04",
+           "label": "Main push product related classification"
+          },
+          {
+           "type": "collection",
+           "id": "main_push_collection_04",
+           "label": "Main Push Product Collection"
+          },
+          {
+            "type": "header",
+            "content": "== Featured Product Settings 05"
+          },
+           {
+           "type": "collection",
+           "id": "related_collection_05",
+           "label": "Main push product related classification"
+          },
+          {
+           "type": "collection",
+           "id": "main_push_collection_05",
+           "label": "Main Push Product Collection"
+          },
+          {
+            "type": "header",
+            "content": "== Featured Product Settings 06"
+          },
+           {
+           "type": "collection",
+           "id": "related_collection_06",
+           "label": "Main push product related classification"
+          },
+          {
+           "type": "collection",
+           "id": "main_push_collection_06",
+           "label": "Main Push Product Collection"
+          },
+           {
+          "type": "color",
+          "id": "main_push_color",
+          "label": "Background color",
+          "default": "#fff"
+        }
+    ]
+  }
+{% endschema %}

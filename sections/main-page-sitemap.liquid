@@ -1,0 +1,228 @@
+<!-- sections/main-page.liquid -->
+{{ 't4s-section.css' | asset_url | stylesheet_tag }}
+{%-liquid
+    assign sid = section.id
+    assign se_stts = section.settings  
+    assign stt_layout = se_stts.layout
+    assign stt_image_bg = se_stts.image_bg
+    if stt_layout == 't4s-se-container' 
+        assign html_layout = '<div class="t4s-container">__</div></div>' | split:'__'
+    elsif stt_layout == 't4s-container-wrap'
+        assign html_layout = '<div class="t4s-container">__</div>' | split:'__'
+    else
+        assign html_layout = '__' | split:'__'
+    endif 
+-%}
+<div class="t4s-section-inner t4s_nt_se_{{sid}} {{ stt_layout }}{% if stt_image_bg != blank and stt_layout != 't4s-se-container' %} t4s-has-imgbg lazyloadt4s{% endif %}" {% if stt_image_bg != blank and stt_layout != 't4s-se-container' %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %} {% render 'section_style',se_stts:se_stts -%} >
+    {{-html_layout[0]-}}
+    {%- if stt_layout == 't4s-se-container' -%}
+    <div class="t4s-container-inner{% if stt_image_bg != blank %} t4s-has-imgbg lazyloadt4s{% endif %}" {% if stt_image_bg != blank %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %}>{% endif -%}
+        <div class="t4s-row">
+            {%- if page.content != blank -%}
+                <div class="t4s-col-item t4s-main-page t4s-main-area">
+                  {{ page.content }}
+            {%- endif -%}
+            <div id="top_all">
+                  <h1>Sitemap</h1>
+                  <div class="top_title">
+                    <h2>Collections</h2>
+                    <div class="collections_list">
+                      {% for collection in collections %}
+                        {{- collection.title | link_to: collection.url }}
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="top_title">
+                    <h2>Products</h2>
+                    <div class="product_list">
+                      {% paginate collections['all'].products by 20 %}
+                          {% for product in collections['all'].products %}
+                            {{- product.title | link_to: product.url }}
+                          {% endfor %}
+                          <div style="width:100%;margin-top: 15px;">{{ paginate | default_pagination }}</div>
+                      {% endpaginate %}
+                    </div>
+                  </div>
+                  <div class="top_title">
+                    <h2>Blogs</h2>
+                    <div class="blogs_list">
+                        {% for link in linklists['blog-category'].links %}
+                          {% for article in blogs[link.handle].articles %}
+                            {{ article.title | link_to: article.url }}
+                          {% endfor %}
+                        {% endfor %}
+                    </div>
+                  </div>
+                  <div class="top_title">
+                    <h2>Pages</h2>
+              
+                    <div class="pages_list">
+                        {% for page in pages -%}
+                          {% if page.handle == 'avada-sitemap-collections' %}
+                            {% continue %}
+                          {% elsif page.handle == 'form-thank-you' %}
+                            {% continue %}
+                          {% elsif page.handle == 'google-callback' %}
+                            {% continue %}
+                          {% elsif page.handle == 'icon' %}
+                            {% continue %}
+                          {% elsif page.handle == 'prostate-massager' %}
+                            {% continue %}
+                          {% elsif page.handle == 'sex-doll-torso-free-shipping' %}
+                            {% continue %}
+                          {% elsif page.handle == 'subscribe-to-our-mailing-list' %}
+                            {% continue %}
+                          {% elsif page.handle == 'track-order' %}
+                            {% continue %}
+                          {% elsif page.handle == 'unsubscribe' %}
+                            {% continue %}
+                          {% elsif page.handle == 'what-is-tpe' %}
+                            {% continue %}
+                          {% endif %}
+                          {{ page.title | link_to: page.url }}
+                        {%- endfor %}
+                    </div>
+                  </div>
+                </div>
+              <div style="clear: both;"></div>
+                </div>
+            <aside data-sidebar-content class="t4s-col-item t4s-col-12 t4s-col-lg-3 t4s-sidebar t4s-dn"><div class="t4s-loading--bg"></div></aside>
+        </div>
+    {{-html_layout[1]-}}
+</div>
+  <style>
+  #top_all{
+    width:100%;
+  }
+  #top_all h1{
+    font-weight: 600;
+  }
+  .top_title{
+    width:24%;
+    float: left;
+    margin-right: 1%;
+  }
+  .top_title h2{
+  font-weight: 500;
+  }
+  .collections_list, .product_list, .blogs_list, .pages_list{
+     display: grid;
+     line-height: 26px;
+  }
+   .collections_list a, .product_list a, .blogs_list a, .pages_list a{
+     border: none !important;
+     cursor: pointer;
+   }
+  .product_list, .blogs_list{
+    padding-right: 10%;
+  }
+  .product_list{
+    width:100%
+  }
+  .product_list .page,.product_list .deco{
+    width:10%;
+    float: left;
+  }
+  .product_list .current{
+    color:red;
+  }
+  .product_list .prev{
+    float: left;
+    margin-right: 15px;
+  }
+  .product_list .next{
+    clear: both;
+  }
+  @media (max-width: 768px){
+      .top_title{
+        width:100%;
+      }
+      #top_all h1{
+        text-align: center;
+      }
+      .top_title h2{
+        text-align: center;
+      }
+  }
+</style>
+{% schema %}
+{
+    "name":"Main page Stiemap",
+    "tag":"section",
+    "class":"t4s-section t4s-section-main",
+    "settings":[
+        {
+            "type": "select","id": "layout","default": "t4s-container-wrap","label": "Layout",
+            "options": [
+                { "value": "t4s-se-container", "label": "Container"},
+                { "value": "t4s-container-wrap", "label": "Wrapped container"},
+                { "value": "t4s-container-fluid", "label": "Full width"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "cl_bg",
+            "label": "Background"
+        },
+        {
+            "type": "color_background",
+            "id": "cl_bg_gradient",
+            "label": "Background gradient"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_bg",
+            "label": "Background image"
+        },
+        {
+            "type": "text",
+            "id": "mg",
+            "label": "Margin",
+            "info": "Margin top, margin right, margin bottom, margin left. If you do not use it please blank.",
+            "default": ",,50px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd",
+            "label": "Padding",
+            "info": "Padding top, padding right, padding bottom, padding left. If you do not use it please blank.",
+            "placeholder": "50px,,50px,"
+        },
+        {
+            "type": "header",
+            "content": "+ Design tablet options"
+        },
+        {
+            "type": "text",
+            "id": "mg_tb",
+            "label": "Margin",
+            "default": ",,50px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd_tb",
+            "label": "Padding",
+            "placeholder": "50px,,50px,"
+        },
+        {
+            "type": "header",
+            "content": "+ Design mobile options"
+        },
+        {
+            "type": "text",
+            "id": "mg_mb",
+            "label": "Margin",
+            "default": ",,30px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd_mb",
+            "label": "Padding",
+            "placeholder": ",,50px,"
+        }
+    ]
+}
+{% endschema %}

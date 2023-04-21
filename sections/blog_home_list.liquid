@@ -1,0 +1,339 @@
+{%- liquid
+  assign se_blocks = section.blocks  -%}
+        {%- if se_blocks.size > 0 -%}
+     <div class="blog_list">
+        {%- for block in se_blocks -%}
+          {%- assign list_left_or_right = block.settings.left_or_right -%}
+          {%- assign blog = block.settings.blog -%}
+          {%- assign categories_title = block.settings.categories_title -%}
+          {%- assign list_img_pc = block.settings.image_pc |default:image -%}
+          {%- assign list_img_mb = block.settings.image_mb |default:image -%}
+          {%- assign categories_list_title = block.settings.categories_list_title -%}
+        <div class="blog_list_model">
+        <div class="blog_list_block">
+          {%- if list_left_or_right == 'left' -%}
+          <div class="blog_list_block_left">
+            <div class="blog_list_img_pc"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}"><img src="{{ list_img_pc | image_url }}"><span>{{ categories_title }}</span></a></div>
+            <div class="blog_list_img_mb"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}"><span>{{ categories_title }}</span><img src="{{ list_img_mb | image_url }}"></a></div>
+          </div>
+          <div class="blog_list_block_right">
+            <div class="blog_list_h3_left">
+              <h3>{{ categories_list_title }}</h3>
+            </div>
+              <div class="blog_list_ul_left">
+                <ul>
+                 {% for blog_info in blogs[blog].articles limit: 3 %}
+                  {% assign article = articles[blog_info.handle] %}
+                  <li>
+                    <div class="blog_list_img_pc">
+                      <a href="{{ article.url }}"><img src="{{ article.image | image_url: width: 220,height: 240 }}"></a>
+                    </div>
+                    <div class="blog_list_img_mb">
+                      <a href="{{ article.url }}"><img src="{{ article.image | image_url: width: 400,height: 240 }}"></a>
+                    </div>
+                    <div class="blog_list_name">
+                      <a href="{{ article.url }}"><h3>{{ article.title }}</h3>
+                      <p>{{ article.excerpt }}</p></a>
+                    </div>
+                    <div class="blog_list_tag">
+                     {% for tag in article.tags limit: 4 -%}
+                      <a href="{{ blog.url }}/tagged/{{ tag.handle }}">{{ tag }},</a>
+                    {%- endfor %}
+                    </div>
+                  </li>
+                   {% endfor %}
+                </ul>
+                <div style="clear: both;"></div>
+              </div>
+              <div class="blog_list_more_left"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}">MORE</a></div>
+            </div>
+            {% else %}
+          <div class="blog_list_block_left_mb">
+            <div class="blog_list_img_pc"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}"><img src="{{ list_img_pc | image_url }}"><span>{{ categories_title }}</span></a></div>
+            <div class="blog_list_img_mb"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}"><span>{{ categories_title }}</span><img src="{{ list_img_mb | image_url }}"></a></div>
+          </div>
+          <div class="blog_list_block_two_left">
+           <div class="blog_list_h3_right">
+              <h3>{{ categories_list_title }}</h3>
+            </div>
+              <div class="blog_list_ul_right">
+                <ul>
+                 {% for blog_info in blogs[blog].articles limit: 3 %}
+                  {% assign article = articles[blog_info.handle] %}
+                  <li>
+                    <div class="blog_list_img_pc">
+                      <a href="{{ article.url }}"><img src="{{ article.image | image_url: width: 220,height: 240 }}"></a>
+                    </div>
+                    <div class="blog_list_img_mb">
+                      <a href="{{ article.url }}"><img src="{{ article.image | image_url: width: 400,height: 240 }}"></a>
+                    </div>
+                    <div class="blog_list_name">
+                      <a href="{{ article.url }}"><h3>{{ article.title }}</h3>
+                      <p>{{ article.excerpt }}</p></a>
+                    </div>
+                    <div class="blog_list_tag">
+                     {% for tag in article.tags limit: 4 -%}
+                      <a href="{{ blog.url }}/tagged/{{ tag.handle }}">{{ tag }},</a>
+                    {%- endfor %}
+                    </div>
+                  </li>
+                   {% endfor %}
+                </ul>
+                <div style="clear: both;"></div>
+              </div>
+              <div class="blog_list_more_right"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}">MORE</a></div>
+          </div>
+          <div class="blog_list_block_two_right_pc">
+            <div class="blog_list_img_pc"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}"><img src="{{ list_img_pc | image_url }}"><span>{{ categories_title }}</span></a></div>
+            <div class="blog_list_img_mb"><a href="https://www.honeyplaybox.com/blogs/{{ blog }}"><span>{{ categories_title }}</span><img src="{{ list_img_mb | image_url }}"></a></div>
+            </div>
+            {% endif %}
+          <div style="clear: both;"></div>
+          </div>
+          </div>
+          {%- endfor -%}
+       
+        </div>
+          {% endif -%}
+<style>
+ /*** list start ***/
+         @media only screen and (max-width : 768px) {
+        .blog_list_img_pc,.blog_list_block_two_right_pc{
+          display:none !important;
+        }
+        .blog_list_img_mb,.blog_list_block_left_mb{
+          display:block !important;
+        }
+        .blog_list_block_left,.blog_list_block_right,.blog_list_block_two_left,.blog_list_block_two_right_pc{
+          width:100% !important;
+        }
+           .blog_list_h3_left h3,.blog_list_h3_right h3 {
+             text-align: left !important;
+             font-size: 30px !important;
+           }
+           .blog_list_ul_left ul,.blog_list_ul_right ul{
+             display: inherit !important;
+           }
+           .blog_list_ul_left ul li,.blog_list_ul_right ul li {
+                width: 100% !important;
+                margin-left: 0px !important;
+            }
+           .blog_list_tag{
+             display:none !important;
+           }
+           .blog_list_more_right{
+             text-align: right !important;
+           }
+   }
+         .blog_list_img_pc,.blog_list_block_two_right_pc{
+          display:block;
+        }
+        .blog_list_img_mb,.blog_list_block_left_mb{
+          display:none;
+        }
+  .blog_list{}
+  .blog_list_model{
+    background-color: #f9f3f2;
+  }
+  .blog_list_block{
+    width: 100%;
+    float: inherit;
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+  .blog_list_block_left{
+    width: 30%;
+    float: left;
+
+  }
+    .blog_list_block_two_left{
+    width: 70%;
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 30px;
+  }
+  .blog_list_block_left span, .blog_list_block_two_right_pc span,.blog_list_block_left_mb span{
+    background: #b52c40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 100px;
+  }
+  .blog_list_block_right{
+    width: 70%;
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 30px;
+  }
+    .blog_list_block_two_right_pc{
+    width: 30%;
+    float: left;
+  }
+  .blog_list_h3_left h3{
+    text-align: right;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .blog_list_h3_right h3{
+    text-align: left;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .blog_list_ul_left{}
+  .blog_list_ul_left ul{
+    list-style-type: none;
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: right;
+  }
+  .blog_list_ul_right ul{
+    list-style-type: none;
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: left;
+  }
+  .blog_list_ul_left ul li{
+    width: 28%;
+    float: left;
+    margin-left: 20px;
+  }
+    .blog_list_ul_right ul li{
+    width: 28%;
+    float: left;
+  }
+  .blog_list_img{
+    text-align: center;
+  }
+  .blog_list_name{
+    padding: 10px;
+  }
+  .blog_list_name h3{
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .blog_list_name p{
+    font-size: 12px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  .blog_list_tag{
+    padding: 0px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .blog_list_tag a{
+    padding: 2px;
+    font-size: 14px;
+    color: #d897a6;
+    white-space: normal;
+    text-overflow: ellipsis;
+    line-height: 25px;
+  }
+  .blog_list_more_left{
+    text-align: right;
+    margin-top: 20px;
+  }
+    .blog_list_more_right{
+    text-align: left;
+    margin-top: 20px;
+  }
+  .blog_list_more_left a, .blog_list_more_right a{
+    font-size: 26px;
+    font-weight: 600;
+    padding: 5px 40px;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #e1566e;
+  }
+  .blog_list_load_more{
+    text-align: center;
+    margin-top: 70px;
+  }
+  .blog_list_load_more a{
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 150px;
+    border-radius: 30px;
+  }
+   /*** list end ***/
+        </style>
+{% schema %}
+  {
+    "name": "Blog Home List Settings",
+    "class": "type_blog_list",
+    "max_blocks": 6,
+    "blocks": [
+       {
+        "type": "list_block",
+        "name": "Blog Categories List",
+        "settings": [
+        {
+            "type": "select",
+            "id": "left_or_right",
+            "label": "List Layout Left OR Right",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+        },
+        {
+           "type": "blog",
+           "id": "blog",
+           "label": "Blog to use"
+         },
+         {
+            "type": "text",
+            "id": "categories_title",
+            "label": "Blog Categories The Cover Title"
+         },
+         {
+         "type": "image_picker",
+         "id": "image_pc",
+         "label": "Blog Categories The Cover Image PC"
+          },
+         {
+         "type": "image_picker",
+         "id": "image_mb",
+         "label": "Blog Categories The Cover Image Mobile"
+          },
+         {
+            "type": "text",
+            "id": "categories_list_title",
+            "label": "Blog Categories List Title"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,160 @@
+{%- liquid
+  assign se_blocks = section.blocks  -%}
+   {%- if se_blocks.size > 0 -%}
+    <div class="slideshow-container">
+        {%- for block in se_blocks -%}
+          {%- assign slides_pc = block.settings.image_pc |default:image -%}
+          {%- assign slides_mb = block.settings.image_mb |default:image -%}
+          {%- assign slides_url = block.settings.img_url -%}
+  <div class="mySlides">
+    <div class="slides_pc"><a href="{{ slides_url }}"><img src="{{ slides_pc | image_url }}" style="width: 100%;"></a></div>
+    <div class="slides_mb"><a href="{{ slides_url }}"><img src="{{ slides_mb | image_url }}" style="width: 100%;"></a></div>
+  </div>
+      {%- endfor -%}
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+ {% endif -%}
+<style>
+    /*** slideshow start ***/
+  @media only screen and (max-width : 768px) {
+    .slides_pc{
+      display:none !important;
+    }
+    .slides_mb{
+      display:block !important;
+    }
+  }
+	.slideshow-container {
+	  max-width: 100%;
+	  position: relative;
+	  margin: auto;
+	}
+	.slides_pc{
+      display:block;
+    }
+    .slides_mb{
+      display:none;
+    }
+	.prev,
+	.next {
+	  cursor: pointer;
+	  position: absolute;
+	  top: 0;
+	  top: 50%;
+	  width: auto;
+	  margin-top: -22px;
+	  padding: 16px;
+	  color: white;
+	  font-weight: bold;
+	  font-size: 18px;
+	  transition: 0.6s ease;
+	  border-radius: 0 3px 3px 0;
+	}
+	
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+	
+	.prev:hover,
+	.next:hover {
+	  background-color: rgba(0, 0, 0, 0.8);
+	}
+	
+	.text {
+	  color: #f2f2f2;
+	  font-size: 15px;
+	  padding: 8px 12px;
+	  position: absolute;
+	  bottom: 8px;
+	  width: 100%;
+	  text-align: center;
+	}
+	
+	.numbertext {
+	  color: #f2f2f2;
+	  font-size: 12px;
+	  padding: 8px 12px;
+	  position: absolute;
+	  top: 0;
+	}
+	
+	.dot {
+	  cursor: pointer;
+	  height: 13px;
+	  width: 13px;
+	  margin: 0 2px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	  transition: background-color 0.6s ease;
+	}
+	
+	.active,
+	.dot:hover {
+	  background-color: #717171;
+	}
+   /*** slideshow end ***/
+</style>
+<script>
+	/* Slideshow JavaScript */
+	var slideIndex = 1;
+	showSlides(slideIndex);
+	
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+	
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+	
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length};
+	  for (i = 0; i < slides.length; i++) {
+	    slides[i].style.display = "none";
+	  }
+	  for (i = 0; i < dots.length; i++) {
+	    dots[i].classList.remove("active");
+	  }
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].classList.add("active");
+	}
+	/* Slideshow JavaScript */
+
+</script>
+{% schema %}
+  {
+    "name": "Blog Home Slides Settings",
+    "class": "type_blog_slides",
+    "max_blocks": 10,
+    "blocks": [
+       {
+        "type": "slides_block",
+        "name": "Settings Slides Images",
+        "settings": [
+         {
+            "type": "text",
+            "id": "img_url",
+            "label": "Image Url"
+            },
+         {
+         "type": "image_picker",
+         "id": "image_pc",
+         "label": "Image PC"
+          },
+          {
+         "type": "image_picker",
+         "id": "image_mb",
+         "label": "Image Mobile"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

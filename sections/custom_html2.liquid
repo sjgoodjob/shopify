@@ -1,0 +1,223 @@
+<div class="nt_se_{{section.id}} {{section.settings.layout}}"><div class="code_setting">{{ section.settings.code }}</div></div>
+{%- render 'section_css' -%}
+{%- schema -%}
+  {
+    "name": "Custom HTML",
+    "class": "nt_section type_custom_html",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "This is an advanced section. Knowledge of web design languages such as HTML, CSS is required."
+      },
+      {
+        "type": "header",
+        "content": "== General Settings"
+      },
+      {
+        "type": "html",
+        "id": "code",
+        "label": "Content",
+        "default": "88888888"
+      },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "options": [
+         {
+            "value": "container",
+            "label": "Container"
+         },
+         {
+            "value": "nt_full",
+            "label": "Full Width"
+          }
+        ],
+        "label": "Layout"
+      },
+      {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background Color"
+      },
+      {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+        "default": "50px,,50px,",
+        "placeholder": "50px,,50px,"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+        "placeholder": "50px,,50px,"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin",
+        "placeholder": "50px,,50px,"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding",
+        "placeholder": "50px,,50px,"
+      }
+    ],
+    "presets": [
+      {
+        "name": "4. Custom HTML",
+        "category": "V. Text"
+      }
+    ]
+  }
+{% endschema %}
+<div id="shopify-section-16577649883722f237" class="shopify-section nt_section type_banner2 type_packery" style="
+    background-color: #fff;padding: 0 15px;margin: 45px auto;
+">
+<div class="container" style="padding:0">
+<div class="row">
+  <div class="t4s-top-heading t4s_des_title_9 t4s-text-center" style="--tophead-mb:30px;--tophead-mb-tb:30px;--tophead-mb-mb:25px;"><h3 class="t4s-section-title t4s-title"><span>HONEYLAND</span></h3></div>
+</div>    
+<div class="row">
+    
+<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+    <a href="https://www.honeyplaybox.com/blogs/sex-positions-guide-pics/5-best-lesbian-sex-positions-for-a-pleasurable-orgasm"><img src="https://cdn.shopify.com/s/files/1/2471/7882/files/honeyplaybox_vibrators.jpg?v=1677148171"width:100%;/* padding-top: 20px; */"></a>
+    <h2 style="
+    text-align: left;
+    color: #000;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding-top: 37px;font-size:21px;
+">5 Best Lesbian Sex Positions For A Pleasurable Orgasm</h2>
+    <p style="
+    text-align: left;
+    color: #000;
+    font-size: 17px;
+    padding-top: 31px;
+    
+">
+        There is a lot of false information about persons with vulva having sex on the internet. What's more, contrary to popular beliefs—which tend to focus on men's pleasure—having sex with another woman is fantastic and really rewarding.
+In this blog, we'll provide you with the 5 best lesbian sex positions that I personally tried!
+    </p>
+</div>
+    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+<div style="height: 80px;width:100%;background-color:#d5455d;font-size: 22px;font-weight: 600;line-height: 80px;color: #fff;"><span style="
+    
+    padding-left: 20px;
+">Recent Posts</span></div>
+<div style="
+    background-color: #ffff;
+">
+
+ <table style="width:100%;margin-top:0px;/* border: 0px !important; */" border="0" class='cus_table'>
+     <tbody><tr style="
+    cellpadding: 0;
+">
+     </tr>
+      {% for article in blogs['positions'].articles limit: 4 %}
+       <tr>
+        <td style="width:45%;"><a href="{{ article.url }}"><img src="{{ article.image | image_url }}"></a></td>
+        <td style="color: #000;vertical-align: top;">
+        <h3 style="color: #000;font-weight: 500;"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+       <p style="font-size: 15px;overflow: hidden;text-overflow: ellipsis;white-space: normal;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;">{{ article.excerpt | strip_html }}</p>
+       <p style="height: 1px;background-color: #000;vertical-align: bottom;margin-top: 20px;"></p>
+        </td>
+       </tr>
+     {% endfor %}
+ </tbody></table>   
+</div>
+    </div>
+</div>
+</div>
+</div>
+<style>
+.type_packery{
+  width: 1200px;
+}
+.div_bg{
+background-color: #dd4355;
+}
+.row_st{
+padding: 50px 0px 50px 15px;
+color: #fff;
+font-size: 22px;
+font-weight: 700;
+}
+.a_st{
+color: #fff;
+}
+.img_st{
+width:100%;
+}
+.img_st>h1{
+text-align: left;
+color: #fff;
+font-weight: 500;
+letter-spacing: 1px;
+padding-top: 37px;
+}
+.p_st{
+text-align: left;
+color: #fff;
+font-size: 17px;
+padding-top: 31px;
+}
+.div_st{
+height: 80px;width:100%;background-color:#f45b86;font-size: 30px;font-weight: 600;line-height: 80px;color: #fff;
+}
+.div_st>span{
+padding-left: 20px;
+}
+.div_st_d{
+background-color: #ffff;
+}
+.table_st{
+width:100%;margin-top:0px;
+}
+.td_st{
+width:45%;
+}
+.td_se_st{
+color: #000;
+vertical-align: top;
+}
+.td_se_st h3{
+color: #000;
+font-weight: 500;
+}
+.td_p{
+font-size:15px;
+}
+.p_line{
+height: 1px;
+background-color: #000;
+vertical-align: bottom;
+margin-top: 20px;
+}
+h3 a{
+  color:#000;
+}
+  h3 a:hover{
+    color:#000;
+  }
+  .cus_table,.cus_table td{
+    border-style:none;
+  }
+    @media (max-width: 1200px){
+      .type_packery{
+        width: 100% !important; 
+      }
+    }
+</style>

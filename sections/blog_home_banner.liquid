@@ -1,0 +1,139 @@
+{%- liquid
+  assign se_blocks = section.blocks  -%}
+        {%- if se_blocks.size > 0 -%}
+   <div class="honeyland_logo">
+     <img src="https://cdn.shopifycdn.net/s/files/1/2471/7882/files/logo-15.png?v=1675216930">
+     <span class="honeyland_name">The affordable sexual wellness & lifestyle brand. Honey Play Box takes pride itself in bringing you high-quality sexual wellness devices with unique sex toys. Honey Play Box is the premier brand in adult novelty toys and wellness devices. We believe pleasure is perfect, and fun. Our team is made up of people who all share the belief that prioritizing pleasure, play, health, positive experiences of sexuality, and accessibility is necessary.</span>
+   </div>
+    <div class="xiao_banner">
+      <ul>
+        {%- for block in se_blocks -%}
+          {%- assign banner_title = block.settings.img_title -%}
+          {%- assign banner_url = block.settings.img_url -%}
+          {%- assign banner_img_pc = block.settings.image_pc |default:image -%}
+          {%- assign banner_img_mb = block.settings.image_mb |default:image -%}
+        <li class="banner_pc"><a href="{{ banner_url }}"><img src="{{ banner_img_pc | image_url }}"><span class="xiao_banner_title">{{ banner_title }}</span></a></li>
+        <li class="banner_mb"><a href="{{ banner_url }}"><img src="{{ banner_img_mb | image_url }}"><span class="xiao_banner_title">{{ banner_title }}</span></a></li>
+        {%- endfor -%}
+      </ul>
+      <div style="clear: both;"></div>
+      <div style="width: 50%; height: 5px; background-color: #d5455d; margin: 40px auto;"></div>
+   </div>
+     {% endif -%}
+   <style>
+        /*** banner start ***/
+       @media only screen and (max-width : 768px) {
+        .banner_pc{
+          display:none !important;
+        }
+        .banner_mb{
+          display:block !important;
+          width: 100% !important;
+        }
+         .xiao_banner_title{
+           background: rgb(0 0 0 /0%) !important;
+         }
+         .xiao_banner{    
+          margin: 0 !important;
+    }
+  }
+     
+  .honeyland_logo{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    padding-top: 50px;
+  }
+  .honeyland_logo img{
+    width: 400px;
+  }
+  .honeyland_name{
+    font-size: 14px;
+    color: #000;
+    line-height: 30px;
+    text-align: left;
+    padding-top: 20px;
+  }
+       .banner_pc{
+          display:block;
+        }
+        .banner_mb{
+          display:none;
+        }
+    .xiao_banner{    
+      max-width:1200px;
+      margin: 50px auto;
+    }
+  .xiao_banner ul{
+    width:100%;
+    float:left;
+    list-style-type: none;
+  }
+  .xiao_banner ul li{
+    width:33%;
+    float:left;
+    position: relative;
+    cursor: pointer;
+  }
+  .xiao_banner_title{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgb(0 0 0 / 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .xiao_banner_title:hover{
+    background: rgb(0 0 0 /0%);
+  }
+   /*** banner end ***/
+   </style>
+{% schema %}
+  {
+    "name": "Blog Home Banner Settings",
+    "class": "type_blog_banner",
+    "max_blocks": 6,
+    "blocks": [
+       {
+        "type": "banner_block",
+        "name": "Settings Banner",
+        "settings": [
+         {
+            "type": "text",
+            "id": "img_url",
+            "label": "Image Url"
+         },
+         {
+            "type": "text",
+            "id": "img_title",
+            "label": "Image text"
+         },
+         {
+         "type": "image_picker",
+         "id": "image_pc",
+         "label": "Image PC"
+          },
+         {
+         "type": "image_picker",
+         "id": "image_mb",
+         "label": "Image Mobile"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

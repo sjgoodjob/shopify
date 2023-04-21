@@ -1,0 +1,444 @@
+{
+  "sections": {
+    "heading": {
+      "type": "heading-static",
+      "disabled": true,
+      "blocks": {
+        "3fcc5c0e-3b55-4490-bb0f-778533d18142": {
+          "type": "1",
+          "settings": {
+            "tag": "p",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 20,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "mgb": 15,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_fs_tb": 16,
+            "text_lh_tb": 0,
+            "text_ls_tb": 0,
+            "mgb_tb": 10,
+            "hidden_mobile": false,
+            "text_fs_mb": 20,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "mgb_mb": 10
+          }
+        },
+        "190dccc0-921d-4bc6-8dbb-51e27461095d": {
+          "type": "2",
+          "settings": {
+            "content": "<p>Sub title page content<\/p>",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 16,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "mgb": 15,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_fs_tb": 16,
+            "text_lh_tb": 0,
+            "text_ls_tb": 0,
+            "mgb_tb": 10,
+            "hidden_mobile": false,
+            "text_fs_mb": 16,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "mgb_mb": 10
+          }
+        },
+        "9c516f81-c531-4ce6-903a-a0493715b39a": {
+          "type": "3",
+          "settings": {
+            "breadcrumb_color_link": "#ffffff",
+            "breadcrumb_color": "#f2f2f2",
+            "brc_mgb": 5,
+            "brc_mgb_tb": 5,
+            "brc_mgb_mb": 5
+          }
+        }
+      },
+      "block_order": [
+        "3fcc5c0e-3b55-4490-bb0f-778533d18142",
+        "190dccc0-921d-4bc6-8dbb-51e27461095d",
+        "9c516f81-c531-4ce6-903a-a0493715b39a"
+      ],
+      "settings": {
+        "parallax": false,
+        "bg_overlay": "#000000",
+        "bg_opacity": 54,
+        "padding_top": 75,
+        "padding_bottom": 75,
+        "padding_top_tb": 50,
+        "padding_bottom_tb": 50,
+        "padding_top_mb": 50,
+        "padding_bottom_mb": 50,
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "mgb": 50,
+        "mgb_tb": 50,
+        "mgb_mb": 50
+      }
+    },
+    "slider": {
+      "type": "blog-slider",
+      "disabled": true,
+      "settings": {
+        "blog": "author",
+        "limit": 10,
+        "date": "date",
+        "col_dk": "3",
+        "col_tb": "2",
+        "col_mb": "1",
+        "show_author": true,
+        "show_date": true,
+        "show_comment": false,
+        "image_ratio": "ratio16_9",
+        "image_position": "8",
+        "image_size": "cover",
+        "img_effect": "zoom",
+        "b_effect": "pervasive-circle",
+        "cl": "#ffffff",
+        "cl2": "#fafafa",
+        "bg": "#000000",
+        "overlay": 0,
+        "loop": true,
+        "au_time": 0,
+        "au_hover": true,
+        "nav_btn": true,
+        "btn_vi": "hover",
+        "btn_owl": "outline",
+        "btn_shape": "round",
+        "btn_cl": "dark",
+        "btn_size": "small",
+        "btn_hidden_mobile": false,
+        "nav_dot": false,
+        "dot_owl": "default",
+        "dots_cl": "dark",
+        "dots_round": false,
+        "dots_space": 10,
+        "dots_hidden_mobile": false,
+        "layout": "t4s-container-fluid",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": ",,,",
+        "pd": "",
+        "mg_tb": ",,50px,",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "a273b492-66c9-43a9-9abd-cca5ba9ff4b0": {
+      "type": "blog-post",
+      "disabled": true,
+      "settings": {
+        "design_heading": "1",
+        "heading_center": true,
+        "top_heading": "Blog post",
+        "icon_heading": "las la-gem",
+        "top_subheading": "",
+        "tophead_mb": 30,
+        "tophead_mb_tb": 30,
+        "tophead_mb_mb": 25,
+        "button_label_hd": "See all posts",
+        "btn_icon_hd": false,
+        "button_style_hd": "bordered",
+        "btn_size_hd": "default",
+        "btn_cl_hd": "dark",
+        "button_effect_hd": "fade",
+        "blog": "toys",
+        "article_design": "1",
+        "show_cate": false,
+        "show_tags": true,
+        "show_cnt": true,
+        "show_au": true,
+        "show_dt": true,
+        "show_cm": false,
+        "show_rm": false,
+        "show_irm": false,
+        "date": "date",
+        "content_align": "t4s-text-start",
+        "limit": 12,
+        "img_effect": "none",
+        "b_effect": "none",
+        "image_ratio": "ratioadapt",
+        "image_size": "cover",
+        "image_position": "8",
+        "col_dk": "3",
+        "col_tb": "2",
+        "col_mb": "2",
+        "space_h_item": "30",
+        "space_v_item": "30",
+        "space_h_item_tb": "15",
+        "space_v_item_tb": "15",
+        "space_h_item_mb": "10",
+        "space_v_item_mb": "10",
+        "layout_des": "2",
+        "loop": true,
+        "au_time": 0,
+        "au_hover": true,
+        "nav_btn": false,
+        "btn_vi": "hover",
+        "btn_owl": "default",
+        "btn_shape": "none",
+        "btn_cl": "dark",
+        "btn_size": "small",
+        "btn_hidden_mobile": false,
+        "nav_dot": false,
+        "dot_owl": "default",
+        "dots_cl": "dark",
+        "dots_round": true,
+        "dots_space": 10,
+        "dots_hidden_mobile": false,
+        "use_pagination": "none",
+        "enable_bar_lm": true,
+        "btn_icon": false,
+        "button_style": "default",
+        "btns_size": "default",
+        "btns_cl": "dark",
+        "button_effect": "default",
+        "btn_pos": "t4s-text-center",
+        "use_custom_radius": false,
+        "custom_radius": 0,
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": ",,50px,",
+        "pd": "",
+        "mg_tb": ",,50px,",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "blog_header": {
+      "type": "blog_header",
+      "blocks": {
+        "90fcb541-46f7-4bc4-9790-60ca47c746e7": {
+          "type": "category",
+          "settings": {
+            "blog_link_list": "blog-category",
+            "title_1": "",
+            "title_2": "",
+            "title_3": "",
+            "title_4": "",
+            "title_5": "",
+            "title_6": ""
+          }
+        },
+        "abfbc18c-adc7-4d14-a6d7-fc94943a03a8": {
+          "type": "bottom_category",
+          "settings": {
+            "blog_link_list": "blog-category",
+            "title_1": "",
+            "title_2": "",
+            "title_3": "",
+            "title_4": "",
+            "title_5": "",
+            "title_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "90fcb541-46f7-4bc4-9790-60ca47c746e7",
+        "abfbc18c-adc7-4d14-a6d7-fc94943a03a8"
+      ],
+      "settings": {
+      }
+    },
+    "blog_home_slides": {
+      "type": "blog_home_slides",
+      "blocks": {
+        "78002b9f-cbd2-4f8b-a3ce-35015271d9d6": {
+          "type": "slides_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/pleasure-tips",
+            "image_pc": "shopify:\/\/shop_images\/blog_588401fc-5c92-47ec-802e-10b03323621f.jpg",
+            "image_mb": "shopify:\/\/shop_images\/blog.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "78002b9f-cbd2-4f8b-a3ce-35015271d9d6"
+      ],
+      "settings": {
+      }
+    },
+    "blog_home_banner": {
+      "type": "blog_home_banner",
+      "blocks": {
+        "35fbb4c8-9612-49cf-adf7-555e1c554549": {
+          "type": "banner_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/pleasure-tips",
+            "img_title": "TIPS",
+            "image_pc": "shopify:\/\/shop_images\/tips_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/tips_mobile.webp"
+          }
+        },
+        "edd46b2b-1df1-4e9a-a753-2fc28b0272da": {
+          "type": "banner_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/toys-guide",
+            "img_title": "TOYS",
+            "image_pc": "shopify:\/\/shop_images\/toys_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/toys_mobile.webp"
+          }
+        },
+        "0065987c-5ea3-4951-bb1f-bc02107249d7": {
+          "type": "banner_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/positions",
+            "img_title": "SEX POSITIONS",
+            "image_pc": "shopify:\/\/shop_images\/sex_position_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/sex_posistion_mobile.webp"
+          }
+        },
+        "508ae3cd-5f5b-4d50-83ea-3adecbbe2962": {
+          "type": "banner_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/stories",
+            "img_title": "STORIES",
+            "image_pc": "shopify:\/\/shop_images\/stories_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/stories_mobile.webp"
+          }
+        },
+        "2b98edd1-9ae8-4ca1-ab96-a6df16c788b1": {
+          "type": "banner_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/relationship",
+            "img_title": "RELATIONSHIP",
+            "image_pc": "shopify:\/\/shop_images\/RELATIONSHIP_PC.webp",
+            "image_mb": "shopify:\/\/shop_images\/RELATIONSHIP_MOBILE.webp"
+          }
+        },
+        "73b23827-4fb1-4de9-a6b6-e916252d1aa6": {
+          "type": "banner_block",
+          "settings": {
+            "img_url": "https:\/\/www.honeyplaybox.com\/blogs\/brand-news",
+            "img_title": "NEWS",
+            "image_pc": "shopify:\/\/shop_images\/NEWS_PC.webp",
+            "image_mb": "shopify:\/\/shop_images\/NEWS_MOBILE.webp"
+          }
+        }
+      },
+      "block_order": [
+        "35fbb4c8-9612-49cf-adf7-555e1c554549",
+        "edd46b2b-1df1-4e9a-a753-2fc28b0272da",
+        "0065987c-5ea3-4951-bb1f-bc02107249d7",
+        "508ae3cd-5f5b-4d50-83ea-3adecbbe2962",
+        "2b98edd1-9ae8-4ca1-ab96-a6df16c788b1",
+        "73b23827-4fb1-4de9-a6b6-e916252d1aa6"
+      ],
+      "settings": {
+      }
+    },
+    "blog_home_list": {
+      "type": "blog_home_list",
+      "blocks": {
+        "ba9f4301-62f3-42a7-9ada-2537ac2a1d32": {
+          "type": "list_block",
+          "settings": {
+            "left_or_right": "left",
+            "blog": "pleasure-tips",
+            "categories_title": "TIPS",
+            "image_pc": "shopify:\/\/shop_images\/B-02.jpg",
+            "image_mb": "shopify:\/\/shop_images\/tips_mobile_7cf10f7a-066f-4dde-8ead-6d08ab7cebf1.webp",
+            "categories_list_title": "SEX TIPS & ADVICE"
+          }
+        },
+        "107bac28-b7ed-4620-a2d7-70f853a184b2": {
+          "type": "list_block",
+          "settings": {
+            "left_or_right": "right",
+            "blog": "toys",
+            "categories_title": "Toys",
+            "image_pc": "shopify:\/\/shop_images\/angel_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/angel_mobile.webp",
+            "categories_list_title": "Toys Guide"
+          }
+        },
+        "63541d48-1cc1-49f1-9312-646e925ada8f": {
+          "type": "list_block",
+          "settings": {
+            "left_or_right": "left",
+            "blog": "positions",
+            "categories_title": "SEX POSITIONS",
+            "image_pc": "shopify:\/\/shop_images\/sex_position_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/sex_posistion_mobile.webp",
+            "categories_list_title": "Sex Positions Guide & Pics"
+          }
+        },
+        "ab42678a-e1a0-4010-af0e-ae8f17a581fb": {
+          "type": "list_block",
+          "settings": {
+            "left_or_right": "right",
+            "blog": "stories",
+            "categories_title": "STORIES",
+            "image_pc": "shopify:\/\/shop_images\/stories_pc.webp",
+            "image_mb": "shopify:\/\/shop_images\/stories_mobile.webp",
+            "categories_list_title": "Personal Stories"
+          }
+        },
+        "f3d5932c-3340-47de-9914-fe4f0e5dd833": {
+          "type": "list_block",
+          "settings": {
+            "left_or_right": "left",
+            "blog": "sex-educations",
+            "categories_title": "RELATIONSHIP",
+            "image_pc": "shopify:\/\/shop_images\/RELATIONSHIP_PC.webp",
+            "image_mb": "shopify:\/\/shop_images\/RELATIONSHIP_MOBILE.webp",
+            "categories_list_title": "Relationship"
+          }
+        },
+        "7354b5d3-6027-47aa-b7e5-96a97e138fc8": {
+          "type": "list_block",
+          "settings": {
+            "left_or_right": "right",
+            "blog": "brand-news",
+            "categories_title": "NEWS",
+            "image_pc": "shopify:\/\/shop_images\/NEWS_PC.webp",
+            "image_mb": "shopify:\/\/shop_images\/NEWS_MOBILE.webp",
+            "categories_list_title": "Brand News"
+          }
+        }
+      },
+      "block_order": [
+        "ba9f4301-62f3-42a7-9ada-2537ac2a1d32",
+        "107bac28-b7ed-4620-a2d7-70f853a184b2",
+        "63541d48-1cc1-49f1-9312-646e925ada8f",
+        "ab42678a-e1a0-4010-af0e-ae8f17a581fb",
+        "f3d5932c-3340-47de-9914-fe4f0e5dd833",
+        "7354b5d3-6027-47aa-b7e5-96a97e138fc8"
+      ],
+      "settings": {
+      }
+    },
+    "blog_template_home": {
+      "type": "blog_template_home",
+      "settings": {
+        "author_url": "https:\/\/www.honeyplaybox.com\/blogs\/author\/",
+        "author_img": "shopify:\/\/shop_images\/blog_auther.png"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "slider",
+    "a273b492-66c9-43a9-9abd-cca5ba9ff4b0",
+    "blog_header",
+    "blog_home_slides",
+    "blog_home_banner",
+    "blog_home_list",
+    "blog_template_home"
+  ]
+}

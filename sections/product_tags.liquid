@@ -1,0 +1,49 @@
+{%- unless product.tags == empty %}
+  <div id="shopify-section-product-tags">
+    {% for tags in product.tags limit: 1 %}
+    <span style="float: left;"><i class="las la-tags"></i></span>
+    {% endfor %}
+    <ul class="tags_product">
+    {% for tags in product.tags %}
+      <li><a href="/collections/all/{{ tags | handleize }}">{{ tags }}</a></li>
+    {% endfor %}
+    </ul>
+    <div style="clear: both;"></div>
+  </div>
+{% endunless -%}
+<style>
+    .tags_product{
+    width:98%;
+  }
+      .tags_product li{
+        float: left;
+        list-style-type: none;
+        margin-left: 20px;
+      }
+      .tags_product li a{
+      font-size: 15px;
+      }
+  #shopify-section-product-tags{
+    max-width: 1320px;
+    margin: 30px auto;
+    clear: both;
+    padding: 10px;
+    border: 1px #e1e0e0 solid;
+  }
+  .facl-tags{
+    width:2%;
+    float: left;
+  }
+    @media (max-width: 768px){
+    #shopify-section-product-tags{
+      margin: 0 10px;
+      margin-bottom: 0 !important;
+    }
+    }
+</style>
+{% schema %}
+  {
+    "name": "Product Tags",
+    "settings": []
+  }
+{% endschema %}

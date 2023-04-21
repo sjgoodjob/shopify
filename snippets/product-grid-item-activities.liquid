@@ -1,0 +1,283 @@
+{%- liquid 
+assign pr_url = product.url
+assign pid = product.id
+assign isDefault = product.has_only_default_variant
+assign pr_variants = product.variants
+assign current_variant = pr_variants.first
+assign variant_price = current_variant.price | divided_by:100.00
+assign variant_compare_at_price = current_variant.compare_at_price | divided_by:100.00
+assign variant_discount = variant_price | divided_by: variant_compare_at_price | times:100 | round
+assign pr_metafields = product.metafields
+assign pr_metafields_meta = pr_metafields.meta
+assign external = pr_metafields.external 
+assign isPreoder = false
+
+if product.tags contains 'isPreoder' or current_variant.inventory_policy == 'continue' and current_variant.inventory_management == 'shopify' and current_variant.inventory_quantity <= 0 and isDefault and product.available
+   assign isPreoder = true
+endif
+
+if current_variant.inventory_management == 'shopify'
+   assign cur_qty = current_variant.inventory_quantity |default:9999
+else
+   assign cur_qty = 9999
+endif
+
+assign meta_theme = product.metafields.theme
+assign cus_qty = meta_theme.cus_qty | default:1
+assign isExternal = false
+assign external_title = meta_theme.external_title 
+assign external_link = meta_theme.external_link
+if external_title != blank and external_link != blank 
+   assign isExternal = true 
+endif
+assign isGrouped = false 
+if  meta_theme.grouped != blank
+   assign isGrouped = true 
+endif
+
+assign custom_badge = meta_theme.custom_badge
+if custom_badge != blank
+   assign arr_badge = custom_badge | replace:'  ', '' | replace:' ;', ';' | replace:'; ', ';' | split:';' | join: 'nt-t4s' | escape | split: 'nt-t4s' | join: 'nt-t4s' | escape | split: 'nt-t4s'
+   assign arr_badge_handle = arr_badge | join:'nt-t4s'| handle | split:'nt-t4s'
+else
+   assign badge_tags = product.tags | where: "badge_"
+   if badge_tags.size > 0
+      assign arr_badge_tags   = badge_tags | join: 'nt-t4s' | remove: 'badge_' | escape
+      assign arr_badge        = arr_badge_tags | split:'nt-t4s'
+      assign arr_badge_handle = arr_badge_tags | handle | split:'nt-t4s'
+   endif
+endif
+
+assign countdown = time_meta| default:meta_theme.countdown | date: '%Y/%m/%d %H:%M:%S'
+unless placeholder_img
+   assign placeholder_img = settings.placeholder_img
+endunless
+assign image = product.featured_media | default:placeholder_img
+
+assign color_count = 0
+assign size_count = 0
+
+if isDefault == false and enable_pr_color or enable_pr_size
+   assign pr_options = product.options_with_values
+   
+   assign img_variants = pr_variants | where: "featured_image"
+   assign available_variants = product.variants | where: "available"
+   for option in pr_options
+      assign name = option.name | downcase
+
+      if enable_pr_color and get_color contains name and color_count == 0
+
+        assign pr_option_color = 'option' | append: forloop.index
+        assign color_variants_avai = available_variants | map: pr_option_color | uniq
+        assign featured_imgs = img_variants | map: 'featured_image'
+        if show_cl_type == '1'
+           assign color_variants = option.values
+        else
+           assign color_variants = color_variants_avai
+        endif
+        assign color_count = color_variants.size
+
+      elsif enable_pr_size and get_size contains name and size_count == 0
+
+        assign pr_option_size = 'option' | append: forloop.index 
+        assign size_variants_avai = available_variants | map: pr_option_size | uniq
+        if show_size_type == '1'
+          assign size_variants = option.values
+        else
+          assign size_variants = size_variants_avai
+        endif
+        assign size_count = size_variants.size
+
+      endif
+
+   endfor
+endif -%}
+
+<div class="t4s-product t4s-pr-grid t4s-pr-style6 t4s-pr-{{pid}} {{col}} t4s-col-item" data-product-options='{ "id":"{{pid}}","cusQty":"{{ cus_qty }}","available":{{product.available}}, "handle":"{{product.handle}}", "isDefault": {{isDefault}}, "VariantFirstID": {{current_variant.id}}, "customBadge":{{arr_badge | json }}, "customBadgeHandle":{{arr_badge_handle | json }},"dateStart":{{product.created_at | date: "%s"}}, "compare_at_price":{{current_variant.compare_at_price | json}},"price":{{current_variant.price| json}}, "isPreoder":{{isPreoder}},"isExternal":{{isExternal}}{% if isExternal %},"external_title":{{external_title| json}},"external_link":"{{external_link| escape}}"{% endif %},"image2":{% if product.media[1] != blank %}{{product.media[1] | image_url: width: 1 | json }},"alt":{{product.media[1].alt | escape | json }}{% else %}false{% endif %},"isGrouped":{{isGrouped}},"maxQuantity":{% if isDefault and isPreoder == false %}{{cur_qty}}{% else %}9999{% endif %} }'>
+  <div class="t4s-product-wrapper">
+   <div class="product_top">
+      <div style="color: #999;">
+      {%- for product_collection in product.collections -%}
+        {%- if product_collection.handle contains 'best-seller' -%}
+          BESTSELLER
+          {%- assign stock_look = true -%}
+          {% break %}
+          {% elsif product_collection.handle == 'new-arrivals' %}
+          NEW
+          {%- assign stock_look = true -%}
+          {% break %}
+          {%- endif -%}
+      {%- endfor -%}
+      {%- if stock_look == empty -%}
+      {%- if product.variants == empty -%}
+         SOLD OUT
+           {%- endif -%}
+        {%- endif -%}
+        </div>
+      {%- if current_variant.compare_at_price > current_variant.price -%}
+ <div>
+   - {{100 | minus:variant_discount }}%</div>
+          {%- endif -%}
+    </div>
+    <div data-cacl-slide class="t4s-product-inner t4s-pr t4s-oh">
+        <div class="ppimg">
+          <div class="ppsmallimg">
+            {%- for product_img in product.images limit: 4 -%}
+              
+            {%- if forloop.first -%}
+              <div class="simg actives" data-rendert4s="{{pr_url}}/?view=img{{sett_equal}}" data-bigimg="{{ product_img | img_url: '600x' }}">
+              {%- else -%}
+              <div class="simg" data-rendert4s="{{pr_url}}/?view=img{{sett_equal}}" data-bigimg="{{ product_img | img_url: '600x' }}">
+              {%- endif -%}
+              <img loading="lazy" src="{{ product_img | img_url: '100x' }}" alt="{{ product_img.alt | escape }}"></div>
+          {%- endfor -%}
+              </div>
+          <div class="changeimg" data-rendert4s="{{pr_url}}/?view=img{{sett_equal}}">
+            <a href="{{ product.url }}">
+              <img  class="pr_lazy_img main-img nt_img_ratio" loading="lazy" src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.featured_image.alt | escape }}">
+            </a>
+          </div>
+          <div class="oldpimgs">
+          <a href="{{ product.url }}">
+<!--             <div class="t4s-product-img t4s_ratio t4s-child-lazyloaded" style="--aspect-ratioapt: 1.0">
+    <img data-pr-img="" class="t4s-product-main-img lazyautosizes ls-is-cached lazyloadt4sed" loading="lazy" src="{{ product.featured_image | img_url: '400x' }}" data-src="{{ product.featured_image | img_url: '400x' }}" data-widths="[100,200,400,600,700,800,900]" data-optimumx="1.5" data-sizes="auto" width="800" height="800" alt="{{ product.featured_image.alt | escape }}" sizes="222px">
+    <span class="lazyloadt4s-loader"></span>
+    <noscript>
+      <img class="t4s-product-main-img" loading="lazy" src="{{ product.featured_image | img_url: '400x' }}"  alt="{{ product.featured_image.alt | escape }}">
+    </noscript>
+</div> -->
+{%- if image != blank %}{% render 'product-img',image:image %}{% endif -%}
+          </a>
+          </div></div>
+<!--         <div data-product-badge="" data-sort="sale,new,soldout,preOrder,custom" class="t4s-product-badge"></div> -->
+      <div class="t4s-product-btns2">
+         
+         
+      </div><a data-pr-href="" class="t4s-full-width-link is--href-replaced" href="{{ product.url }}"></a>
+    </div>
+    
+    <div class="t4s-product-info">
+      <div class="t4s-product-info__inner">
+<!--         {%- if current_variant.compare_at_price > current_variant.price -%}
+ <span class="t4s-badge-price-top">SAVE {{100 | minus:variant_discount }}%</span>
+          {%- endif -%} -->
+          <style>
+  @media (max-width: 767px){
+    .cjl-videotext-dis{
+      display:none
+    }
+  }
+</style>
+<div class="t4s-product-rating" style="display:flex;justify-content: space-between;align-items: center;flex-direction: inherit;">
+{%- if enable_rating %}{%- render 'product-rating',product:product,app_review:app_review -%}{% endif -%}
+{% assign videos = product.media | where: 'media_type', 'video' %}
+{%- if videos -%}
+{% for media in videos %}
+  <div><a href="javascript:void(0);" style="display: flex;align-items: center;" class="click_video_{{ current_variant.id }}">
+      <span class="cjl-videotext-dis" style="color: #000;font-size: 16px;">VIDEO</span>
+      <i class="las la-play-circle" style="font-size:24px;color: #000"></i>
+    </a></div>
+  {% break %}
+  {% endfor %}
+  {%- endif -%}
+  {%- if videos == empty -%}
+    <div><a href="{{product.url}}#product_video" style="display: flex;align-items: center;" class="click_video">
+    <span class="cjl-videotext-dis" style="color: #000;font-size: 16px;">VIDEO</span>
+    <i class="las la-play-circle" style="font-size:24px;color: #000"></i>
+    </a></div>
+  {%- endif -%}
+</div>
+        
+         <h3 class="t4s-product-title"><a data-pr-href="" href="{{pr_url}}" class="is--href-replaced">{{product.title}}</a>
+         </h3>
+        <div class="t4s-rte product_p">
+           {%- if pr_metafields_meta.description_excerpt != blank -%}<p class="mg__0">{{- pr_metafields_meta.description_excerpt -}}</p>
+           {%- else -%}<p class="mg__0">{{- product.description | strip_html -}}</p>
+           {%- endif -%}
+        </div>
+        {%- if color_count > 0 %}{% assign color_variants_str = color_variants | join:'nt-t4s' %}<div class="t4s-product-colors" data-color-options='{ "color_count":{{color_count}}, "color_variants":{{color_variants_str | escape | split:'nt-t4s' | json}}, "color_variants_avai":{{color_variants_avai | join: 'nt-t4s' | escape | split: 'nt-t4s' | json}}, "color_variants_handle":{{color_variants_str | handle | split:'nt-t4s' | json}}, "img_variants":{{featured_imgs | json }}, "id_variants":{{img_variants  | map:'id' | json }}, "img_ratios":{{featured_imgs  | map:'aspect_ratio' | json }}, "img_options":{{img_variants  | map:pr_option_color | join: 'nt-t4s' | escape | split: 'nt-t4s' | json }} }'><span class="t4s-pr-color__item"><span class="t4s-pr-color__value bg_color_ntloading"></span></span><span class="t4s-pr-color__item"><span class="t4s-pr-color__value bg_color_ntloading"></span></span><span class="t4s-pr-color__item"><span class="t4s-pr-color__value bg_color_ntloading"></span></span></div>{% endif -%}
+        {%- if size_count > 0 and pr_size_pos == '2' %}{%- render 'product-size', size_variants: size_variants, size_variants_avai: size_variants_avai, show_size_type: show_size_type -%}{% endif -%}
+        <div class="t4s-product-bottom">
+          <div class="t4s-product-price" data-pr-price="" data-product-price="">
+            {%- render 'product-price',product:product,price_varies_style:price_varies_style,type:'card',isGrouped:isGrouped -%}
+<!--        <span class="t4s-badge-price">SAVE {{100 | minus:variant_discount }}%</span> -->
+          </div>
+          <div class="t4s-product-btns">
+            {%- if color_count > 0 -%}
+            <a href="{{url_product | default:product.url }}" class="t4s-pr-item-btn t4s-pr-addtocart" rel="nofollow">
+              <span class="t4s-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#t4s-icon-atc"></use></svg></span>
+              <span class="t4s-text-pr">Select options</span>
+            </a>
+              {%- else -%}
+              <a href="{{url_product | default:product.url }}" data-atc-selector="" data-tooltip="" data-id="{{ current_variant.id }}" rel="nofollow" class="t4s-pr-item-btn t4s-pr-addtocart t4s-tooltip-actived" dat-qty="1" data-action-atc="" data-variant-id="{{ current_variant.id }}" data-qty="1">
+                <span class="t4s-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#t4s-icon-atc"></use></svg></span>
+                <span class="t4s-text-pr">Add to cart</span>
+              </a>
+<!--               <a href="{{url_product | default:product.url }}" data-atc-selector="" data-tooltip="" data-id="{{ current_variant.id }}" rel="nofollow" class="t4s-pr-item-btn t4s-pr-addtocart t4s-tooltip-actived" dat-qty="1" data-action-quickshop="">
+                <span class="t4s-svg-pr-icon">
+                  <svg viewBox="0 0 24 24"><use xlink:href="#t4s-icon-atc"></use></svg></span>
+                <span class="t4s-text-pr">Quick Shop</span></a> -->
+
+<!--             <div class="product_add_to_cart">
+              {% form 'product',product %}
+                <input name="id" data-productid="{{ product.id }}" value="{{ current_variant.id }}" type="hidden">
+                <button type="submit" data-time="2000" data-ani="none" class="single_add_to_cart_button button truncate js_frm_cart w__100 order-4">
+                  <span class="t4s-text-pr">Add to cart</span><span class="txt_pre dn">Pre-order</span></button>
+              {% endform %}
+            </div> -->
+            {%- endif -%}
+<!--               <div class="nt_add_w ts__03 order-3">
+            	<a href="{{url_product | default:product.url }}" data-no-instant data-id="{{product.id}}" class="wishlistadd cb chp ttip_nt tooltip_top_left" rel="nofollow"><span class="tt_txt">{{ 'general.nt_tooltip.add_to_wishlist' | t }}</span><i class="facl facl-heart-o"></i></a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+  $(document).ready(function(){
+   var screenWidth = screen.width;
+   if(screenWidth > 768){
+  //   $(window).on('scroll', function() {
+  //     if ($('.t4s-pr-{{ pid }}').offset().top+200 >= $(window).scrollTop() && $('.t4s-pr-{{ pid }}').offset().top+200 < ($(window).scrollTop() + $(window).height())) {
+  //         setTimeout(function() {
+  //           $('.t4s-pr-{{ pid }} .ppimg').css('display','flex');   
+  //           $('.t4s-pr-{{ pid }} .oldpimg').css('display','none');
+  //           $('.t4s-pr-{{ pid }} .product_top').css('display','none');
+  //           $('.t4s-pr-{{ pid }} .ppsmallimg').css('display','block');   
+  //           $('.t4s-pr-{{ pid }} .changeimg').css('display','block');
+  //           $('.t4s-pr-{{ pid }} .product_p').css('display','inline-block');   
+  //         },1000); 
+  //        }else if($('.t4s-pr-{{ pid }}').offset().top > ($(window).scrollTop()) || $('.t4s-pr-{{ pid }}').offset().top < ($(window).scrollTop())){
+  //         setTimeout(function() {
+  //           $('.t4s-pr-{{ pid }} .ppimg').css('display','block');   
+  //           $('.t4s-pr-{{ pid }} .oldpimg').css('display','block');
+  //           $('.t4s-pr-{{ pid }} .product_top').css('display','block');
+  //           $('.t4s-pr-{{ pid }} .ppsmallimg').css('display','none');   
+  //           $('.t4s-pr-{{ pid }} .changeimg').css('display','none');     
+  //           $('.t4s-pr-{{ pid }} .product_p').css('display','none'); 
+  //         },1000);           
+  //       }
+  //     });
+  // }else{
+  $('.t4s-pr-{{ pid }} .ppsmallimg .simg').on('mouseover', function(){
+    let bigimg = $(this).data('bigimg');
+    $(this).parent().parent().find('.changeimg img').attr('src', bigimg);
+    $(this).parent().find('.simg').removeClass('actives');
+    $(this).addClass('actives');
+  });    
+  }
+}); 
+
+  $('.click_video_{{ current_variant.id }}').on('click',function(){
+    $('.video_content').show();
+    $('#video_{{ current_variant.id }}').show();
+    $('.video_content').click(function(){
+    $('.video_content').hide();
+    $('#video_{{ current_variant.id }}').hide();      
+    });
+    
+  });
+</script>

@@ -1,0 +1,477 @@
+{%- liquid
+  assign se_blocks = section.blocks  -%}
+<div class="blog_header">
+    <div class="blog_logo"><a href="https://www.honeyplaybox.com"><img src="https://cdn.shopify.com/s/files/1/2471/7882/files/logo-01.png?v=1674962944"></a></div>
+    <nav class="blog_nav">
+      <div id="menuToggle">
+        <input type="checkbox" />
+        	<span></span>
+		    <span></span>
+		    <span></span>
+{%- if se_blocks.size > 0 -%}
+  {%- for block in se_blocks -%}
+     {%- case block.type -%}
+      {%- when 'category' -%}
+    {%- assign blog_top_link_list = block.settings.blog_link_list -%}
+    {%- assign blog_category_title_1 = block.settings.title_1 -%}
+    {%- assign blog_category_title_2 = block.settings.title_2 -%}
+    {%- assign blog_category_title_3 = block.settings.title_3 -%}
+    {%- assign blog_category_title_4 = block.settings.title_4 -%}
+    {%- assign blog_category_title_5 = block.settings.title_5 -%}
+    {%- assign blog_category_title_6 = block.settings.title_6 -%}
+    <ul class="blog_ul">
+      {%- for link in linklists[blog_top_link_list].links -%}
+        {%- if link.type != 'blog_link' %}{% continue %}{% endif -%}
+        {%- if link.title == blog_category_title_1 %}{% continue %}{% endif -%}
+        {%- if link.title == blog_category_title_2 %}{% continue %}{% endif -%}
+        {%- if link.title == blog_category_title_3 %}{% continue %}{% endif -%}
+        {%- if link.title == blog_category_title_4 %}{% continue %}{% endif -%}
+        {%- if link.title == blog_category_title_5 %}{% continue %}{% endif -%}
+        {%- if link.title == blog_category_title_6 %}{% continue %}{% endif -%}
+      <li class="blog_li"><i class="las la-las la-chevron-circle-right mr__10 fs__20"></i><a href="{{ link.url }}">{{link.title}}</a>
+        {%- if link.articles_count < 1 %}
+      <ul class="blog_li_ul" style="display:none;">
+          {% else %}
+          <ul class="blog_li_ul">
+           {% endif -%}
+      {% for blog_ul in blogs[link.handle].articles limit: 3 %}
+        {% assign article = articles[blog_ul.handle] %}
+        <li class="blog_post"><a href="{{ article.url }}"><img src="{{ article.image | image_url: width: 300,height: 200 }}">{{ article.title }}</a></li>
+      {% endfor %}
+      </ul>
+      {%- endfor -%}
+      </li>
+    </ul>
+  </nav>
+      <div class="blog_home_search">
+        <div class="t4s-site-nav__icon t4s-site-nav__search"><a class="t4s-pr" href="/search" data-drawer-delay-="" data-drawer-options="{ &quot;id&quot;:&quot;#t4s-search-hidden&quot; }">
+				<svg class="t4s-icon t4s-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg>
+			</a></div>
+      </div>
+      <div style="clear: both;"></div>
+      {%- when 'bottom_category' -%}
+       <div class="top_nav">
+        <div class="top_nav_ul">
+          <a href="/" class="top_na top_home top_color">Home</a>
+
+        {%- assign blog_top_link_list = block.settings.blog_link_list -%}
+        {%- assign blog_category_title_1 = block.settings.title_1 -%}
+        {%- assign blog_category_title_2 = block.settings.title_2 -%}
+        {%- assign blog_category_title_3 = block.settings.title_3 -%}
+        {%- assign blog_category_title_4 = block.settings.title_4 -%}
+        {%- assign blog_category_title_5 = block.settings.title_5 -%}
+        {%- assign blog_category_title_6 = block.settings.title_6 -%}
+        {%- for link in linklists[blog_top_link_list].links -%}
+          {%- if link.type != 'blog_link' %}{% continue %}{% endif -%}
+          <a href="{{ link.url }}" class="top_na">  {{link.title}}</a>
+        {%- endfor -%}
+    </div>  
+    </div>
+      {%- endcase -%}
+      {%- endfor -%}
+  {% endif -%}
+</div>
+<script>
+  (function(){
+  var screenWidth = screen.width;
+if(screenWidth < 768){
+  let pageHeight = document.body.scrollHeight || document.documentElement.scrollHeight; // 页面总高度
+  let windowHeight = document.documentElement.clientHeight || document.body.clientHeight; // 浏览器视口高度
+  var blog_header = document.querySelector('.blog_header'),
+	  blogHeaderTop = blog_header.offsetTop;
+  console.log('窗口的高度：', blogHeaderTop);
+  window.onscroll = function () {
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  // 获取滚动条的高度
+    //console.log('滚动条的高度：', scrollTop);
+  if(scrollTop>=blogHeaderTop){
+    blog_header.style.cssText = "position: fixed;top: 0px;z-index: 99;";
+  }else{
+    blog_header.style.cssText = "position: relative;";
+  }
+  }
+  }
+}());
+</script>
+<style>
+  #shopify-section-header-inline{
+    display:none;
+  }
+  .blog_header{
+    width: 100%;
+    float: inherit;
+  }
+  #menuToggle input{
+    display:none;
+  }
+  .blog_home_search{
+    position: absolute;
+    right: 5%;
+    background-color: #d5455d;
+    padding-top: 20px;
+  }
+  .blog_home_search svg{
+    width:22px;
+    height:22px;
+  }
+  .blog_home_search a{
+    color:#fff;
+  }
+  .blog_home_search a:hover{
+    color:#fff;
+  }
+  .blog_home_search>a>i{
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media only screen and (max-width : 768px) {
+     .blog_header{
+       background-color: #d5455d;
+     }
+    .blog_logo {
+    width: 85% !important;
+    float: right !important;
+    }
+    .blog_nav {
+    width: 15% !important;
+    float: left !important;
+    position: relative;
+    z-index: 101;
+}
+    	#menuToggle
+		{
+		  display: block;
+		  position: relative;
+          top: 20px;
+          left: 20px;
+		  
+		  z-index: 1;
+		  
+		  -webkit-user-select: none;
+		  user-select: none;
+		}
+		
+		#menuToggle a
+		{
+		  text-decoration: none;
+		  color: #383838;
+		  padding: 0;
+		  transition: color 0.3s ease;
+          font-size: 14px;
+		}
+		
+		#menuToggle a:hover
+		{
+		  color: #383838;
+		}
+        nav li:hover a {
+            background: #eee !important;
+        }
+		
+		#menuToggle input
+		{
+		  display: block;
+		  width: 40px;
+		  height: 32px;
+		  position: absolute;
+          top: -10px;
+          left: -12px;
+		  
+		  cursor: pointer;
+		  
+		  opacity: 0; /* hide this */
+		  z-index: 2; /* and place it over the hamburger */
+		  
+		  -webkit-touch-callout: none;
+		}
+		
+		#menuToggle span
+		{
+		  display: block;
+		  width: 33px;
+		  height: 4px;
+		  margin-bottom: 5px;
+		  position: relative;
+		  
+		  background: #fff;
+		  border-radius: 3px;
+		  
+		  z-index: 1;
+		  
+		  transform-origin: 4px 0px;
+		  
+		  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+		              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+		              opacity 0.55s ease;
+		}
+		
+		#menuToggle span:first-child
+		{
+		  transform-origin: 0% 0%;
+		}
+		
+		#menuToggle span:nth-last-child(2)
+		{
+		  transform-origin: 0% 100%;
+		}
+		
+		#menuToggle input:checked ~ span
+		{
+		  opacity: 1;
+		  transform: rotate(45deg) translate(-2px, -1px);
+		  background: #232323;
+		}
+		
+		#menuToggle input:checked ~ span:nth-last-child(3)
+		{
+		  opacity: 0;
+		  transform: rotate(0deg) scale(0.2, 0.2);
+		}
+		
+		#menuToggle input:checked ~ span:nth-last-child(2)
+		{
+		  transform: rotate(-45deg) translate(0, -1px);
+		}
+		
+		.blog_ul
+		{
+		  position: absolute;
+		  width: 300px;
+          left: 20px;
+		  margin: -100px 0 0 -50px;
+		  padding-bottom: 30px;
+		  padding-top: 112px;
+		  
+		  background: #fffdfd;
+		  list-style-type: none;
+		  -webkit-font-smoothing: antialiased;
+		  /* to stop flickering of text in safari */
+		  
+		  transform-origin: 0% 0%;
+		  transform: translate(-100%, 0);
+		  
+		  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+		}
+		
+		.blog_ul li
+		{
+		  padding: 10px 0;
+		  font-size: 22px;
+          border-bottom: 1px solid rgba(129,129,129,.2);
+          width: 100%;
+          display: flex;
+          padding-left: 30px;
+		}
+        .blog_ul li:hover{
+          background-color: #eee;
+        }
+		.blog_ul li i{
+          display: flex !important;
+          align-items: center;
+        }
+        .blog_ul li ul {
+          display:none;
+        }
+		#menuToggle input:checked ~ ul
+		{
+		  transform: none;
+		}
+  }  
+  .blog_nav{
+    background-color: #d5455d;
+    width: 85%;
+    float: left;
+  }
+  .blog_logo{
+    width: 15%;
+    float: left;
+    text-align: center;
+    line-height: 65px;
+    background-color: #d5455d;
+  }
+  .blog_logo img{
+    width: 125px;
+  }
+  .blog_ul{
+    line-height: 35px;
+  }
+  		nav ul {
+		  -webkit-font-smoothing: antialiased;
+		  list-style: none;
+		  margin: 0;
+		  padding: 0;
+		  width: 100%;
+		}
+		nav li {
+		  float: left;
+		  margin: 0;
+		  padding: 0;
+		  position: relative;
+		}
+		nav a {
+          color: #fff;
+          display: block;
+          padding: 15px 25px;
+          text-align: center;
+          text-decoration: none;
+		  -webkit-transition: all .25s ease;
+		  -moz-transition: all .25s ease;
+		  -ms-transition: all .25s ease;
+		  -o-transition: all .25s ease;
+		  transition: all .25s ease;
+		}
+		nav li:hover a {
+		  background: #ef6784;
+		  color:#FFF;
+		}
+		nav li ul {
+          width: 800px;
+          float: left;
+          position: absolute;
+          top: 62px;
+          z-index: 99;
+          background-color: #ef6784;
+          padding: 20px;
+		  opacity: 0;
+		  visibility: hidden;
+		  z-index: 999;
+		  -webkit-transition: all .25s ease;
+		  -moz-transition: all .25s ease;
+		  -ms-transition: all .25s ease;
+		  -o-transition: all .25s ease;
+		  transition: all .25s ease;
+		}
+        nav li:last-child ul{
+          right:0;
+        }
+		nav li:hover ul {
+		  opacity: 1;
+		  top: 50px;
+		  visibility: visible;
+		}
+		nav li ul li {
+          width: 30%;
+          float: left;
+          display: grid;
+          margin: 0 12px;
+		}
+		nav li ul a:hover {
+		  background: #ef6784;
+		}
+  		.blog_ul li i{
+          display: none;
+        }
+		/* Clearfix */
+		.blog_ul:after, .blog_ul:before {
+		  content: "";
+		  display: table;
+		}
+		.blog_ul:after {
+		  clear: both;
+		}
+  .blog_post img{}
+  .blog_post a{}
+  .blog_post a:hover{}
+</style>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+{%- schema -%}
+  {
+    "name": "Blog header",
+    "class": "type_blog_header",
+    "blocks": [
+       {
+        "type": "category",
+        "name": "Categories List",
+        "limit": 1,
+        "settings": [
+          {
+           "type": "link_list",
+           "id": "blog_link_list",
+           "label": "Choose a blog link list"
+          },
+            {
+            "type": "text",
+            "id": "title_1",
+            "label": "hide category title 1"
+            },
+            {
+            "type": "text",
+            "id": "title_2",
+            "label": "hide category title 2"
+            },
+             {
+            "type": "text",
+            "id": "title_3",
+            "label": "hide category title 3"
+            },
+            {
+            "type": "text",
+            "id": "title_4",
+            "label": "hide category title 4"
+            },
+            {
+            "type": "text",
+            "id": "title_5",
+            "label": "hide category title 5"
+            },
+            {
+            "type": "text",
+            "id": "title_6",
+            "label": "hide category title 6"
+            }
+        ]
+      },
+            {
+        "type": "bottom_category",
+        "name": "Bottom Categories List",
+        "limit": 1,
+        "settings": [
+          {
+           "type": "link_list",
+           "id": "blog_link_list",
+           "label": "Choose a blog link list"
+          },
+            {
+            "type": "text",
+            "id": "title_1",
+            "label": "hide category title 1"
+            },
+            {
+            "type": "text",
+            "id": "title_2",
+            "label": "hide category title 2"
+            },
+             {
+            "type": "text",
+            "id": "title_3",
+            "label": "hide category title 3"
+            },
+            {
+            "type": "text",
+            "id": "title_4",
+            "label": "hide category title 4"
+            },
+            {
+            "type": "text",
+            "id": "title_5",
+            "label": "hide category title 5"
+            },
+            {
+            "type": "text",
+            "id": "title_6",
+            "label": "hide category title 6"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog Header",
+        "category": "blog_header"
+      }
+    ]
+  }
+{% endschema %}

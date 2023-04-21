@@ -1,0 +1,111 @@
+
+{% if request.design_mode %}
+<style>.pf-ph{font-size:14px!important;background:#fafafa;padding:20px;text-align:center;border:1px solid #f0f0f0;border-radius:4px;margin:15px}.pf-ph span{display:block;background:#e6f7ff;padding:8px 15px;border:1px solid #91d5ff}</style>
+{% endif %}
+{% if section.settings.section_id.size > 0 %}
+  {% assign snippet_name = section.settings.section_id %}
+  {% render 'pagefly-settings' %}
+  {% include snippet_name %}
+  {% else %}
+    
+    {% if request.design_mode %}
+      <div class="pf-ph">
+        <h3>PageFly Section</h3>
+        <span>No section selected. Please select your section from the list</span>
+      </div>
+    {% endif %}
+  
+{% endif %}
+
+{% schema %}
+{
+  "name": "PageFly Section",
+  "settings": [
+    {
+      "id": "section_id",
+      "type": "select",
+      "label": "Sections",
+      "options": [
+        {
+          "label": "Select section",
+          "value": ""
+        },
+        {
+          "label": "shipping and package section",
+          "value": "pf-6d091aa2"
+        },
+        {
+          "label": "joi section",
+          "value": "pf-127bc913"
+        },
+        {
+          "label": "mobile pictuers details",
+          "value": "pf-8cdc30f1"
+        },
+        {
+          "label": "PC detail pictures-1",
+          "value": "pf-e22f1bc6"
+        },
+        {
+          "label": "Key features mobile",
+          "value": "pf-468d0731"
+        },
+        {
+          "label": "PC Key Feature section",
+          "value": "pf-e9f6993a"
+        },
+        {
+          "label": "PC pictures section",
+          "value": "pf-4138d4db"
+        },
+        {
+          "label": "best seller seo description",
+          "value": "pf-b0754996"
+        },
+        {
+          "label": "Specification2023214",
+          "value": "pf-fc29e3c8"
+        },
+        {
+          "label": "Guides and Advices",
+          "value": "pf-bfd1ba6b"
+        },
+        {
+          "label": "Tag - Saved - 20230213",
+          "value": "pf-bf3ec146"
+        },
+        {
+          "label": "Sectionkey",
+          "value": "pf-c36ea130"
+        },
+        {
+          "label": "Slideshow",
+          "value": "pf-2cca68ff"
+        },
+        {
+          "label": "FEATURED IN",
+          "value": "pf-5a0fe9be"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Find and edit your section on the [section listing](https://apps.pagefly.io/sections)"
+    },
+    {
+      "type": "paragraph",
+      "content": "To add block to a section, please use the App Block element on PageFly section editor."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PageFly Section"
+    }
+  ]
+}
+{% endschema %}

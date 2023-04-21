@@ -1,0 +1,156 @@
+      <div class="top_nav_ul">
+        {% if template.name == "index" %}
+        <a href="/" class="top_na top_home top_color">Home</a>
+        {%- else -%}
+        <a href="/" class="top_na top_home">Home</a>
+        {% endif %}
+          {%- if collection_list_top_1 != empty -%}
+          {%- assign header_list_top_1 = collections[collection_list_top_1] -%}
+          {%- if header_list_top_1.title == collection.title -%}
+            <a href="{{ header_list_top_1.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_1.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_1.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_2 != empty -%}
+          {%- assign header_list_top_2 = collections[collection_list_top_2] -%}
+          {%- if header_list_top_2.title == collection.title -%}
+            <a href="{{ header_list_top_2.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_2.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_2.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_3 != empty -%}
+          {%- assign header_list_top_3 = collections[collection_list_top_3] -%}
+          {%- if header_list_top_3.title == collection.title -%}
+            <a href="{{ header_list_top_3.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_3.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_3.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_4 != empty -%}
+          {%- assign header_list_top_4 = collections[collection_list_top_4] -%}
+          {%- if header_list_top_4.title == collection.title -%}
+            <a href="{{ header_list_top_4.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_4.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_4.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_5 != empty -%}
+          {%- assign header_list_top_5 = collections[collection_list_top_5] -%}
+          {%- if header_list_top_5.title == collection.title -%}
+            <a href="{{ header_list_top_5.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_5.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_5.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_6 != empty -%}
+          {%- assign header_list_top_6 = collections[collection_list_top_6] -%}
+          {%- if header_list_top_6.title == collection.title -%}
+            <a href="{{ header_list_top_6.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_6.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_6.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_7 != empty -%}
+          {%- assign header_list_top_7 = collections[collection_list_top_7] -%}
+          {%- if header_list_top_7.title == collection.title -%}
+            <a href="{{ header_list_top_7.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_7.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_7.title }}</a>
+          {% endif -%}
+          
+          {%- if collection_list_top_8 != empty -%}
+          {%- assign header_list_top_8 = collections[collection_list_top_8] -%}
+          {%- if header_list_top_8.title == collection.title -%}
+            <a href="{{ header_list_top_8.url }}" class="top_na top_color">
+            {%- else -%}
+            <a href="{{ header_list_top_8.url }}" class="top_na">
+            {% endif -%}
+            {{ header_list_top_8.title }}</a>
+          {% endif -%}
+      </div>
+<style>
+   @media screen and (min-width: 1025px){
+     .top_nav{
+       display:none;
+     }
+   }
+    @media screen and (max-width: 1024px){
+  #shopify-section-header_top{
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 399;
+    opacity: 1 !important;
+    height: 41px;
+  }
+  #shopify-section-header_3{
+    position: relative;
+    top: 40px;
+  }
+  .cat_toolbar.cat_stuck_prepared{
+    z-index: 389 !important;
+  }
+  .top_nav{
+    display:block;
+    height: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .top_nav_ul{
+    height: 4.5rem;
+    line-height: 28px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .top_nav_ul a:hover{
+    color: #fff;
+  }
+ .top_home{
+   margin-left: 5px;        
+  }
+  .top_na{
+    color: #ededed;
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 12px;
+  }
+  .top_color{
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background: url('https://m.bestvibe.com/asset/css/f/hon.png') 50% bottom no-repeat;
+    background-size: 25px 6px;
+  }
+    }
+</style>
+<script>
+  {%- if header_list_top_5.title == collection.title -%}
+  document.querySelector('.top_nav_ul').scrollLeft=170;
+  {% endif -%}
+  {%- if header_list_top_6.title == collection.title -%}
+  document.querySelector('.top_nav_ul').scrollLeft=200;
+  {% endif -%} 
+  {%- if header_list_top_7.title == collection.title -%}
+  document.querySelector('.top_nav_ul').scrollLeft=350;
+  {% endif -%} 
+  {%- if header_list_top_8.title == collection.title -%}
+  document.querySelector('.top_nav_ul').scrollLeft=350;
+  {% endif -%} 
+</script>
