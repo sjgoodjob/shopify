@@ -1,6 +1,7 @@
 {
   "current": {
     "purchase_code": "5d544f41-ca35-4147-a0e7-03b9e2c94a39",
+    "general_layout": "boxed",
     "home_keywords": "sex toys, adult toys, clit vibrators, dildos, penis toys, anal toys,sexy lingerie",
     "shop_author": "Honey Play Box",
     "use_rtl": "2",
@@ -301,7 +302,7 @@
             "type": "bl_col",
             "settings": {
               "col_heading": "INFORMATION",
-              "menu": "info",
+              "menu": "",
               "menu_style": "1",
               "col_dk": "15",
               "col_dk_w": "25",
@@ -321,7 +322,7 @@
             "type": "bl_col",
             "settings": {
               "col_heading": "SUPPORT",
-              "menu": "information",
+              "menu": "",
               "menu_style": "1",
               "col_dk": "15",
               "col_dk_w": "25",
@@ -341,7 +342,7 @@
             "type": "bl_col",
             "settings": {
               "col_heading": "HONEYPLAYBOX GLOBAL",
-              "menu": "extra-links",
+              "menu": "",
               "menu_style": "1",
               "col_dk": "15",
               "col_dk_w": "25",
@@ -680,7 +681,7 @@
               "title": "Vibrators",
               "url": "shopify:\/\/collections\/vibrators",
               "open_link": "_self",
-              "menu": "vibrators",
+              "menu": "",
               "icon": "",
               "cus_cl": false,
               "cl": "#ec0101",
@@ -697,7 +698,7 @@
               "title": "Masturbators",
               "url": "shopify:\/\/collections\/masturbators",
               "open_link": "_self",
-              "menu": "masturbators",
+              "menu": "",
               "icon": "",
               "cus_cl": false,
               "cl": "#ec0101",
@@ -714,7 +715,7 @@
               "title": "Sex Toys",
               "url": "shopify:\/\/collections\/sex-toys",
               "open_link": "_self",
-              "menu": "sex-toys",
+              "menu": "",
               "icon": "",
               "cus_cl": false,
               "cl": "#ec0101",
@@ -1414,7 +1415,6 @@
               "collection": "clothing",
               "collection_title": "WOMEN",
               "collection_subtitle": "",
-              "image": "shopify:\/\/shop_images\/banner-05.jpg",
               "collection_des": "1",
               "title_cl": "#ffffff",
               "title_cl_hover": "#b59677",
@@ -1442,7 +1442,6 @@
               "collection": "clothing",
               "collection_title": "MEN",
               "collection_subtitle": "",
-              "image": "shopify:\/\/shop_images\/banner-06.jpg",
               "collection_des": "1",
               "title_cl": "#ffffff",
               "title_cl_hover": "#b59677",
@@ -1607,7 +1606,7 @@
               "tt_hd": "Male Best Sellers",
               "url": "shopify:\/\/pages\/male-best-sellers",
               "open_link": "_self",
-              "menu": "male",
+              "menu": "",
               "col": "4"
             }
           },
@@ -1652,7 +1651,7 @@
               "tt_hd": "Male Strokers",
               "url": "shopify:\/\/collections\/stroker",
               "open_link": "_self",
-              "menu": "male",
+              "menu": "",
               "col": "4"
             }
           }
@@ -1722,7 +1721,7 @@
               "title": "Vibrators",
               "url": "shopify:\/\/collections\/vibrators",
               "open_link": "_self",
-              "menu": "vibrators",
+              "menu": "",
               "lb": "",
               "lb_cl": "",
               "icons_op": "2",
@@ -1748,7 +1747,7 @@
               "title": "Anal Toys",
               "url": "shopify:\/\/collections\/anal-toys",
               "open_link": "_self",
-              "menu": "anals",
+              "menu": "",
               "lb": "",
               "lb_cl": "",
               "icons_op": "2",
@@ -1761,7 +1760,7 @@
               "title": "Dildos",
               "url": "shopify:\/\/collections\/dildos",
               "open_link": "_self",
-              "menu": "dildos",
+              "menu": "",
               "lb": "",
               "lb_cl": "",
               "icons_op": "2",
@@ -1774,7 +1773,7 @@
               "title": "BDSM",
               "url": "shopify:\/\/collections\/bdsm",
               "open_link": "_self",
-              "menu": "bdsm",
+              "menu": "",
               "lb": "",
               "lb_cl": "",
               "icons_op": "0",
@@ -1787,7 +1786,7 @@
               "title": "Lubes & Accessories",
               "url": "https:\/\/www.honeyplaybox.com\/collections\/lubes-better-sex",
               "open_link": "_self",
-              "menu": "lubes-better-sex",
+              "menu": "",
               "lb": "",
               "lb_cl": "",
               "icons_op": "0",
@@ -1905,7 +1904,6 @@
               "lb": "",
               "lb_cl": "#e91e63",
               "icons_op": "2",
-              "image": "shopify:\/\/shop_images\/bannerscioness-ph_deb97b96-da31-4f20-bf3a-c081b27dcac8.jpg",
               "icon": "las la-female"
             }
           },
@@ -3547,39 +3545,7 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
-        "settings": {
-        }
-      },
-      "16865981829950876834": {
-        "type": "shopify:\/\/apps\/icart-cart-drawer-cart-upsell\/blocks\/icart-block\/e651bbc2-5760-47d8-a513-2aa6ee3a9aa7",
-        "disabled": false,
-        "settings": {
-        }
-      },
-      "15119538188275799212": {
-        "type": "shopify:\/\/apps\/fontify-google-custom-fonts\/blocks\/app-embed\/334490e2-2153-4a2e-a452-e90bdeffa3cc",
-        "disabled": false,
-        "settings": {
-        }
-      },
-      "5822432907971180753": {
-        "type": "shopify:\/\/apps\/bundle-bear-volume-discounts\/blocks\/widget\/8301eac6-7eb6-487c-92f6-ccde92f1db50",
-        "disabled": false,
-        "settings": {
-        }
-      },
-      "21474836472147483647": {
-        "type": "shopify:\/\/apps\/ecomposer-landing-page-builder\/blocks\/app-embed\/a0fc26e1-7741-4773-8b27-39389b4fb4a0",
-        "disabled": false,
-        "settings": {
-        }
-      }
-    }
+    ]
   },
   "platform_customizations": {
     "custom_css": [
